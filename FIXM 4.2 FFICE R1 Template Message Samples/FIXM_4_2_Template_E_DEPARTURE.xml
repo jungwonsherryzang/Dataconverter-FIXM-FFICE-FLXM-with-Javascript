@@ -1,0 +1,63 @@
+<!--
+=====================================
+Message Type: FLIGHT_DEPARTURE
+Test Data Version Num: 1.0
+Schema Version: FIXM 4.2.0
+This sample message was automatically generated at 
+Wed Feb 24 13:34:03 EST 2021 by the Data Governance Module (DGM). 
+NOTE: This is not meant to be used in production and should be 
+used for test/informational purposes only.
+=====================================
+-->
+<FficeMessage xsi:type="FficeFD_FficeMessageType" xmlns="http://www.fixm.aero/app/ffice/1.0" xmlns:ns2="http://www.fixm.aero/flight/4.2" xmlns:ns4="http://www.fixm.aero/app/ffice2/1.0" xmlns:ns3="http://www.fixm.aero/base/4.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <flight>
+        <ns2:arrival>
+            <ns2:destinationAerodrome>
+                <ns3:locationIndicator>KMCO</ns3:locationIndicator>
+            </ns2:destinationAerodrome>
+            <ns2:destinationAerodromeAlternate>
+                <ns3:locationIndicator>KMIA</ns3:locationIndicator>
+            </ns2:destinationAerodromeAlternate>
+        </ns2:arrival>
+        <ns2:departure>
+            <ns2:actualTimeOfDeparture>2021-02-24T18:34:03.453Z</ns2:actualTimeOfDeparture>
+            <ns2:aerodrome>
+                <ns3:locationIndicator>EDDF</ns3:locationIndicator>
+            </ns2:aerodrome>
+            <ns2:estimatedOffBlockTime>2021-02-24T18:34:03.453Z</ns2:estimatedOffBlockTime>
+            <ns2:runwayDirection>12R</ns2:runwayDirection>
+        </ns2:departure>
+        <ns2:flightIdentification>
+            <ns2:aircraftIdentification>DLH796</ns2:aircraftIdentification>
+        </ns2:flightIdentification>
+        <ns2:gufi codeSpace="urn:uuid">bd0c634a-951c-4f7e-88f4-fba237b20525</ns2:gufi>
+        <ns2:gufiOriginator>
+            <ns3:contact>
+                <ns3:name>FAA</ns3:name>
+                <ns3:title>PROJECT MANAGER</ns3:title>
+            </ns3:contact>
+            <ns3:name>FAA</ns3:name>
+        </ns2:gufiOriginator>
+    </flight>
+    <originator>
+        <ns3:contact>
+            <ns3:name>FAA</ns3:name>
+            <ns3:title>PROJECT MANAGER</ns3:title>
+        </ns3:contact>
+        <ns3:identifier>IDENTIFIER</ns3:identifier>
+        <ns3:identifierDomain>FF-ICE</ns3:identifierDomain>
+        <ns3:name>FAA</ns3:name>
+    </originator>
+    <recipient>
+        <ns3:contact>
+            <ns3:name>FAA</ns3:name>
+            <ns3:title>PROJECT MANAGER</ns3:title>
+        </ns3:contact>
+        <ns3:identifier>IDENTIFIER</ns3:identifier>
+        <ns3:identifierDomain>FF-ICE</ns3:identifierDomain>
+        <ns3:name>FAA</ns3:name>
+    </recipient>
+    <timestamp>2021-02-24T18:34:03.453Z</timestamp>
+    <type>FLIGHT_DEPARTURE</type>
+    <uniqueMessageIdentifier codeSpace="urn:uuid">3ff24818-e31a-4a87-84a0-1cb3240fffed</uniqueMessageIdentifier>
+</FficeMessage>

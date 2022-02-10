@@ -1,0 +1,38 @@
+<!--
+=====================================
+Message Type: SUBMISSION_RESPONSE
+Test Data Version Num: 1.0
+Schema Version: FIXM 4.2.0
+This sample message was automatically generated at 
+Tue Mar 30 11:57:06 EDT 2021 by the Data Governance Module (DGM). 
+NOTE: This is not meant to be used in production and should be 
+used for test/informational purposes only.
+=====================================
+-->
+<FficeMessage xsi:type="FficeSR_FficeMessageType" xmlns="http://www.fixm.aero/app/ffice/1.0" xmlns:ns2="http://www.fixm.aero/flight/4.2" xmlns:ns3="http://www.fixm.aero/base/4.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <originator>
+        <ns3:contact>
+            <ns3:name>NAME</ns3:name>
+            <ns3:title>DISPATCHER</ns3:title>
+        </ns3:contact>
+        <ns3:identifier>IDENTIFIER</ns3:identifier>
+        <ns3:identifierDomain>FF-ICE</ns3:identifierDomain>
+        <ns3:name>FAA</ns3:name>
+    </originator>
+    <recipient>
+        <ns3:contact>
+            <ns3:name>NAME</ns3:name>
+            <ns3:title>DISPATCHER</ns3:title>
+        </ns3:contact>
+        <ns3:identifier>IDENTIFIER</ns3:identifier>
+        <ns3:identifierDomain>FF-ICE</ns3:identifierDomain>
+        <ns3:name>FAA</ns3:name>
+    </recipient>
+    <referencedMessageIdentifier codeSpace="urn:uuid">3eba73b4-359d-40a3-ab6d-15738d3f6e4f</referencedMessageIdentifier>
+    <submissionStatus>
+        <value>ACK</value>
+    </submissionStatus>
+    <timestamp>2021-03-30T15:57:06.929Z</timestamp>
+    <type>SUBMISSION_RESPONSE</type>
+    <uniqueMessageIdentifier codeSpace="urn:uuid">fa2a0114-d6b2-4fa9-a3ec-d0eb721f25d9</uniqueMessageIdentifier>
+</FficeMessage>
