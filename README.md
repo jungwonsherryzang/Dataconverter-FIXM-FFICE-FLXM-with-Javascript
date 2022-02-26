@@ -4,7 +4,6 @@
 
 ``` python
 
-def paella():
-  return
+
 
 ```
