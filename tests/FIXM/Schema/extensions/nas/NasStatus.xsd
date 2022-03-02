@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Defines the NAS specific flight status information.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:simpleType name="AirborneHoldIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Specifies whether or not the aircraft is in an airborne hold.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIRBORNE_HOLD"/>
+			<xs:enumeration value="NOT_AIRBORNE_HOLD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AircraftMovementStateValueType">
+		<xs:annotation>
+			<xs:documentation>Defines values for the TFDM aircraft movement flight state.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SCHEDULED"/>
+			<xs:enumeration value="FILED"/>
+			<xs:enumeration value="AT_STAND"/>
+			<xs:enumeration value="NON_MOVEMENT_AREA_HOLD"/>
+			<xs:enumeration value="RAMP_TAXI_OUT"/>
+			<xs:enumeration value="AT_SPOT_OUT"/>
+			<xs:enumeration value="AMA_HOLDING"/>
+			<xs:enumeration value="AMA_TAXI_OUT"/>
+			<xs:enumeration value="IN_DEPARTURE_QUEUE"/>
+			<xs:enumeration value="STAND_RETURN"/>
+			<xs:enumeration value="LUAW"/>
+			<xs:enumeration value="TAKEOFF_ROLL"/>
+			<xs:enumeration value="TAKEOFF_ROLL_ABORT"/>
+			<xs:enumeration value="DEPARTED"/>
+			<xs:enumeration value="EN_ROUTE"/>
+			<xs:enumeration value="ARRIVAL"/>
+			<xs:enumeration value="ON_FINAL"/>
+			<xs:enumeration value="MISSED_APPROACH"/>
+			<xs:enumeration value="ON_RUNWAY"/>
+			<xs:enumeration value="AMA_TAXI_IN"/>
+			<xs:enumeration value="RAMP_TAXI_IN"/>
+			<xs:enumeration value="UNKNOWN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AtcStateValueType">
+		<xs:annotation>
+			<xs:documentation>Defines the values for TFDM atc flight state.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CD"/>
+			<xs:enumeration value="CD_CLEARANCE"/>
+			<xs:enumeration value="GC_PENDING"/>
+			<xs:enumeration value="GC"/>
+			<xs:enumeration value="HOLD"/>
+			<xs:enumeration value="LC"/>
+			<xs:enumeration value="LUAW"/>
+			<xs:enumeration value="CLEARED_FOR_TAKEOFF"/>
+			<xs:enumeration value="DEPARTED"/>
+			<xs:enumeration value="ARCHIVE"/>
+			<xs:enumeration value="LC_PENDING"/>
+			<xs:enumeration value="CLEARED_TO_LAND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CanceledButFlewIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates for both a Ground Delay Program and and Airspace Flow Program that a flight that had a status of cancelled at the time that it was activated by a NAS message and then it operated.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CANCELED_BUT_FLEW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CancellationStatusReasonType">
+		<xs:annotation>
+			<xs:documentation>Provides the reason for a flight cancellation from a Traffic Flow Management Program.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UX">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled due to an EDCT UPDATE cancel. An Authorized FAA User may utilize the EDCT UPDATE command to cancel a flight that is part of a TMI.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FX">
+				<xs:annotation>
+					<xs:documentation>Indicates an FX message has been processed for this flight canceling the flight. An FX message is the CDM message used by a CDM Participant to indicate a flight is not operating.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RZ">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled and an RZ message has been processed for this flight. An RZ message is a NAS flight plan cancel message.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RS">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled and an RS message has been processed for this flight. An RS message is an internal TFMS message generated when an Authorized FAA User takes an OAG flight out of the database.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TO">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled due to having been timed out by TFMS-Core. TFMS-Core times out a flight when no activation message has been received within a certain time of the predicted departure time. The time out logic for flights departing the 20 Continental United States (CONUS), seven Canadian, Honolulu (ZHN/PHZH) and Anchorage (ZAN/PAZA) Centers is as follows: 1) If NAS messages have been received for a flight, TFMS-Core times out the flight 90 minutes after its predicted departure time. 2) If only OAG data or CDM messages have been received for a flight, TFMS-Core times out the flight five minutes after departure time. TFMS-Core does not time out flights departing from other regions of the world.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DV">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled and was diverted to an alternate destination. The diversion may have come from either a NAS flight plan or a CDM modify (FM) message.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RM">
+				<xs:annotation>
+					<xs:documentation>Indicates a flight that has been manually removed by an Authorized FAA User.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DP">
+				<xs:annotation>
+					<xs:documentation>Indicates a flight that has been canceled for being a duplicate.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ID">
+				<xs:annotation>
+					<xs:documentation>Indicates a flight that has been canceled because it is an International departure that never took off.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CNL">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is currently canceled and a CNL message has been processed for this flight. A CNL message is an IADE flight plan cancel message.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CancellationStatusReasonListType">
+		<xs:annotation>
+			<xs:documentation>Helper simpleType to allow for enumerated lists in FIXM.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="nas:CancellationStatusReasonType"/>
+	</xs:simpleType>
+	<xs:simpleType name="SfdpsFlightStatusType">
+		<xs:annotation>
+			<xs:documentation>Represents the current status of the flight as specified by the SWIM SFDPS.
+Identification of the current aspect of the flight life cycle as determined by the SWIM Flight Data Publication Service (SFDPS).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PROPOSED">
+				<xs:annotation>
+					<xs:documentation>There is at least one non-cancelled flight plan in place and the flight has not yet become airborne.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ACTIVE">
+				<xs:annotation>
+					<xs:documentation> Flight is airborne and updates are still being generated for the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COMPLETED">
+				<xs:annotation>
+					<xs:documentation> Flight has landed at its destination.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CANCELLED">
+				<xs:annotation>
+					<xs:documentation>There are only cancelled flight plans for the flight and it was never airborne.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DROPPED">
+				<xs:annotation>
+					<xs:documentation>Data updates terminated before the flight landed. It is unknown whether the flight is still airborne or not. This could be a flight that has left FAA airspace or a flight that has switched to Visual Flight Rules.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SpuriousFlightIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates for both a Ground Delay Program and and Airspace Flow Program that a flight that was not scheduled (that is, was created on that day from a CDM message or flight plan), was controlled in a Traffic Management Initiative and was cancelled by a CDM message.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SPURIOUS_FLIGHT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StarsFlightStatusType">
+		<xs:annotation>
+			<xs:documentation>STARS flight type. Arrival (A), Departure (P or D), or Enroute (E).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ARRIVAL"/>
+			<xs:enumeration value="DEPARTURE"/>
+			<xs:enumeration value="ENROUTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsFlightStatusType">
+		<xs:annotation>
+			<xs:documentation>Indicates the current status of the flight, as determined by Traffic Flow Management System (TFMS).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACTIVE"/>
+			<xs:enumeration value="CANCELED"/>
+			<xs:enumeration value="COMPLETED"/>
+			<xs:enumeration value="PLANNED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NasFlightStatusType">
+		<xs:annotation>
+			<xs:documentation> Identifies the aspect of the flight life cycle. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airborneHold" type="nas:AirborneHoldIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Specifies whether or not the aircraft is in an airborne hold.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="canceledButFlewIndicator" type="nas:CanceledButFlewIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates for both a Ground Delay Program and and Airspace Flow Program that a flight that had a status of canceled at the time that it was activated by a NAS message and then it operated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sfdpsFlightStatus" type="nas:SfdpsFlightStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Represents the current status of the flight as specified by the SWIM SFDPS.
+Status: Identification of the current aspect of the flight life cycle as determined by the SWIM Flight Data Publication Service (SFDPS).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="spuriousFlightIndicator" type="nas:SpuriousFlightIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates for both a Ground Delay Program and and Airspace Flow Program that a flight that was not scheduled (that is, was created on that day from a CDM message or flight plan), was controlled in a Traffic Management Initiative and was cancelled by a CDM message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="starsFlightStatus" type="nas:StarsFlightStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>STARS flight type. Arrival (A), Departure (P or D), or Enroute (E).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfdmAtcFlightState" type="nas:TfdmAtcFlightStateType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the status for a flight from an ATC perspective</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfdmFlightState" type="nas:TfdmFlightStateType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the actual status for a flight in relation to its movement phase</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfmsCancellationReason" type="nas:CancellationStatusReasonListType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the reason(s) for a flight cancellation from a Traffic Flow Management Program.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfmsFlightStatus" type="nas:TfmsFlightStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Indicates the current status of the flight, as determined by Traffic Flow Management System (TFMS).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TfdmAtcFlightStateType">
+		<xs:annotation>
+			<xs:documentation>Provides the status for a flight from an ATC perspective</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="nas:AtcStateValueType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Defines the values for TFDM atc flight state.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TfdmFlightStateType">
+		<xs:annotation>
+			<xs:documentation>Provides the actual status for a flight in relation to its movement phase</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="nas:AircraftMovementStateValueType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Defines values for the TFDM aircraft movement flight state.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

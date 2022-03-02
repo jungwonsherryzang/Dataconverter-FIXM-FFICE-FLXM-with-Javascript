@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Contains information about Traffic Management Initiatives affecting the flight.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:include schemaLocation="NasTmiTrajectoryOptions.xsd"/>
+	<xs:include schemaLocation="NasTmiConstrainedAirspace.xsd"/>
+	<xs:simpleType name="AdvisoryTypeType">
+		<xs:annotation>
+			<xs:documentation>The type for the advisory issued by traffic flow management.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GDP">
+				<xs:annotation>
+					<xs:documentation>Ground Delay Program advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AFP">
+				<xs:annotation>
+					<xs:documentation>Airspace Flow Program advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GDP_CANCEL">
+				<xs:annotation>
+					<xs:documentation>Ground Delay Program cancellation advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AFP_CANCEL">
+				<xs:annotation>
+					<xs:documentation>Airspace Flow Program cancellation advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GS">
+				<xs:annotation>
+					<xs:documentation>Ground Stop Program advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GS_CANCEL">
+				<xs:annotation>
+					<xs:documentation>Ground Stop Program cancellation advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="REROUTE">
+				<xs:annotation>
+					<xs:documentation>Reroute advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CTOP">
+				<xs:annotation>
+					<xs:documentation>Collaborative Trajectory Options Program advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CTOP_CANCEL">
+				<xs:annotation>
+					<xs:documentation>Collaborative Trajectory Options Program cancellation advisory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CanMoveIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates if the center can amend the flight to improve its overall reroute conformance status.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CAN_MOVE">
+				<xs:annotation>
+					<xs:documentation>Flight can be moved.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CANNOT_MOVE">
+				<xs:annotation>
+					<xs:documentation>Flight cannot be moved.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CenterConformanceIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the flight is conformant within the bounds of the center.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CONFORMANT">
+				<xs:annotation>
+					<xs:documentation>Flight is conformant.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NON_CONFORMANT">
+				<xs:annotation>
+					<xs:documentation>Flight is not conformant.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControlIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicator used to describe when flight control is active or canceled.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CONTROL_ACTIVE"/>
+			<xs:enumeration value="CONTROL_CANCELED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControlTypeType">
+		<xs:annotation>
+			<xs:documentation>If a flight is controlled [i.e., has a Controlled Time of Departure (CTD) and Controlled Time of Arrival (CTA)], this element indicates the specific source of the current control times for this flight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CTOP">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of a CTOP program.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GDP">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of an GDP-Initial or GDP-Revision. (GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AFP">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of an AFP-Initial or AFP-Revision. (AFP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GS">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of a GDP-Ground Stop. (GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BLKT">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of a GDP Blanket (+/-). (GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COMP">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned as part of a AFP-Compression or GDP-Compression. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRG"/>
+			<xs:enumeration value="DAS">
+				<xs:annotation>
+					<xs:documentation>Control time which resulted from the assignment of the average delay to a pop-up flight which did not receive an unassigned slot in an AFP or GDP. For DAS based programs this is used for the initial delay assignments to all pop-up flights. For GAAP and UDP based program, this control type is used only if no unassigned slot is available for the pop-up. This control type is not used for re-controlled flights. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GAAP">
+				<xs:annotation>
+					<xs:documentation>Control times are the result of a GAAP or UDP based AFP or GDP if a pop-up or a re-control flight is allocated to an unassigned slot. This occurs for all pop-up flights in a GAAP or UDP based program when an unassigned slot is available for the flight. However, only some classes of re-controlled flights in a GAAP or UDP are assigned to unassigned slots. (e.g., those that occur after dropping out of an AFP). (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UDP"/>
+			<xs:enumeration value="RCTL">
+				<xs:annotation>
+					<xs:documentation>Control time which resulted from the assignment of the average delay to a flight that was at some point controlled by a GDP or AFP, which was then purged or the flight dropped out and was re-controlled in another AFP. For DAS programs this is used for the initial delay assignments to all re-controlled flights. For GAAP and UDP, this control type is used only if no unassigned slot is available for the re-controlled flight or the class of re-controlled flight is never assigned to unassigned slots. As opposed to other pop-ups, RCTL flights retain full substitution rights. (AFP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SUB">
+				<xs:annotation>
+					<xs:documentation>Control times assigned by a conventional user substitution message. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SCS">
+				<xs:annotation>
+					<xs:documentation>Control times assigned by a slot credit substitution message submitted by a NAS User (AFP and GDP).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ECR">
+				<xs:annotation>
+					<xs:documentation>Control time assigned by a slot credit substitution message submitted by an Authorized FAA user. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UPD">
+				<xs:annotation>
+					<xs:documentation>Control time or UX cancel status from an TFMS EDCT UPDATE command made by an Authorized FAA user. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ABRG">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned when the flight was utilized to create a bridge for Adaptive Compression performed automatically by the TFMS-Core. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SBRG">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned when creating a bridge for an SCS or ECR request. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UBRG">
+				<xs:annotation>
+					<xs:documentation>Control times were assigned when creating a bridge for pop-up flight assignment during UDP. Performed automatically by the TFMS-Core. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ADPT">
+				<xs:annotation>
+					<xs:documentation>Control time assigned when the flight was adaptively compressed by the TFMS-Core. (AFP and GDP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NasRouteTypeType">
+		<xs:annotation>
+			<xs:documentation>Route type of the assigned reroute.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NONE">
+				<xs:annotation>
+					<xs:documentation>blank entry (for EXPLICIT selection)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CDR_RTE">
+				<xs:annotation>
+					<xs:documentation>Coded Departure Route (retrieved from the CDR db)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RERTE">
+				<xs:annotation>
+					<xs:documentation>Reroute (manually updated reroute)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UNKN_RTE">
+				<xs:annotation>
+					<xs:documentation>Unknown Route</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UPT_RTE">
+				<xs:annotation>
+					<xs:documentation>User Preferred Trajectory Route (user submitted early intent route)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PreferredRouteIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether this assigned route is the preferred route.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PREFERRED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RerouteInclusionIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the flight is included in or excluded from the traffic management reroute initiative.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INCLUDED">
+				<xs:annotation>
+					<xs:documentation>Indicates that the flight is included or proposed to be included in the traffic management reroute initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NOT_INCLUDED">
+				<xs:annotation>
+					<xs:documentation>Indicates that the flight is not included or not proposed to be included in the traffic management reroute initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SlotHoldStatusType">
+		<xs:annotation>
+			<xs:documentation>If a flight is controlled  [e.g., has a  Controlled Time of Arrival (CTA), and Arrival Slot (ASLOT)] and then the flight is cancelled, the slot hold status indicates whether the slot associated with this flight is being held, or would be held, by the Airspace User for the next compression.
+
+The compression algorithm will not automatically fill slots that are held. If a flight is not controlled the slot hold has no effect, although users may set the slot hold in anticipation of a flight becoming controlled. A slot hold may only be set for flights that are cancelled. One of two entries: HOLD (if true), RELEASE (if false) ."</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HOLD"/>
+			<xs:enumeration value="RELEASE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SubstitutionRightsIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether any NAS user has substitution rights for this flight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUBSTITUTION_RIGHTS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmProgramUpdateTypeType">
+		<xs:annotation>
+			<xs:documentation>Defines if the flight is a New/Popup, Dropout, or Update relative to this Traffic Flow Management Initiative</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="UPDATE"/>
+			<xs:enumeration value="DROPOUT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TmiComplianceIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether a flight is compliant to a number of aspects of Traffic Management Initiative.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="COMPLIANT"/>
+			<xs:enumeration value="NON_COMPLIANT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FlowProgramInformationType">
+		<xs:annotation>
+			<xs:documentation>Container that holds Traffic Flow Program information (AFP, GDP, GS).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="afpFlightCreationTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Used here for an AFP.  This is the time when the flight was first detected intersecting the Flow Evaluation Area/Flow Constrained Area.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="assignedSlot" type="nas:SlotAssignmentType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>When a TMI is issued, each controlled flight is assigned an arrival slot.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlExemptIndicator" type="nas:ControlExemptIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight was processed as exempt from the Traffic Flow Management Initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intersectedAirspace" type="nas:NasIntersectedAirspaceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Constrained airspace intersected by the flight affected by this flow program (AFP only).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="programIdentifier" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The Traffic Flow Management System generated unique identifier for the program.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="slotHoldStatus" type="nas:SlotHoldStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> If a flight is controlled and cancelled [e.g., has a Controlled Time of Departure (CTD), Controlled Time of Arrival (CTA), and Arrival Slot (ASLOT)], the slot hold status indicates whether the slot associated with this flight is being held, or would be held, by the Airspace User for the next full compression.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="substitutionRightsIndicator" type="nas:SubstitutionRightsIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Indicates whether any NAS user has substitution rights for this flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasAdvisoryType">
+		<xs:annotation>
+			<xs:documentation>A container for Traffic Flow Management advisories pertinent to a single flight.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="advisoryNumber" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Advisory number issued by traffic flow management.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="advisoryType" type="nas:AdvisoryTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The type for the advisory issued by traffic flow management.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="advisoryUpdateTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The date and time when the advisory was last updated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasAssignedRouteType">
+		<xs:annotation>
+			<xs:documentation>A container for assigned route information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="inclusionIndicator" type="nas:RerouteInclusionIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is included in or excluded from the traffic management reroute initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preferredIndicator" type="nas:PreferredRouteIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether this assigned route is the preferred route.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="protectedSegment" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>All or a portion of the route string that is designated as the protected portion.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="route" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Assigned route of the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="routeType" type="nas:NasRouteTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Route type of the assigned route.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasCenterConformanceType">
+		<xs:annotation>
+			<xs:documentation>Conformance status per center traversed.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="canMove" type="nas:CanMoveIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates if the center can amend the flight to improve its overall reroute conformance status.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="center" type="fb:AtcUnitReferenceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The center the flight is traversing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="conformant" type="nas:CenterConformanceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight is conformant within the bounds of the center.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasControlElementChoiceType">
+		<xs:annotation>
+			<xs:documentation>The name of the aerodrome (GDP), constrained airspace (AFP), or CTOP identifier (CTOP) currently controlling the flight.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="aerodrome" type="fb:AerodromeReferenceType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The aerodrome controlling the flight (GDP, GS).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="constrainedAirspaceIdentifier" type="fb:TextNameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The identifier for the constrained airspace controlling the flight (AFP).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ctopIdentifier" type="fb:CharacterStringType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The identifier for the CTOP controlling the flight (CTOP).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NasRerouteType">
+		<xs:annotation>
+			<xs:documentation> A container for information pertinent to a single NAS reroute issued for a flight by traffic flow management.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="assignedRoute" type="nas:NasAssignedRouteType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Reroute data associated with the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="centerConformance" type="nas:NasCenterConformanceType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Conformance status per center traversed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="overallConformanceStatus" type="nas:NasConformanceStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The flight's overall Reroute Conformance status.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rerouteIdentifier" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Traffic Flow Management System generated unique identifier for the reroute.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasTmiType">
+		<xs:annotation>
+			<xs:documentation>Container for NAS Traffic Management Initiatives.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="advisories" type="nas:NasAdvisoryType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation> A container for Traffic Flow Management advisories pertinent to a single flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlElement" type="nas:NasControlElementChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The name of the aerodrome (GDP) or constrained airspace (AFP or CTOP) currently controlling the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlIndicator" type="nas:ControlIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicator used to describe when flight control is active or canceled.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlProgram" type="nas:NasControlElementChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The name of the TMI currently controlling the times for a flight.  Can be either: the name of the airport for a GDP, the name of the FCA for an AFP, or the CTOP identifier for a CTOP.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlType" type="nas:ControlTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> If a flight is controlled [i.e., has a Controlled Time of Departure (CTD) and Controlled Time of Arrival (CTA)], this element indicates the specific source of the current control times for this flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmiCompliance" type="nas:TmiComplianceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Describes the Traffic Management Initiatives Compliance.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trafficManagementInitiative" type="nas:NasTrafficManagementInitiativeType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Traffic management initiative affecting the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasTrafficManagementInitiativeType">
+		<xs:annotation>
+			<xs:documentation>Container for Traffic Management Initiatives.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Helper class to create an embedded choice structure.</xs:documentation>
+				</xs:annotation>
+				<xs:element name="collaborativeTrajectoryOptionsProgram" type="nas:CollaborativeTrajectoryOptionsProgramType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Container for information pertaining to definition of Collaborative Trajectory Options Program.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="constrainedAirspace" type="nas:NasConstrainedAirspaceType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Contains information about a constrained airspace (FCA, FEA) associated with the flight.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="flowProgram" type="nas:FlowProgramInformationType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Container that holds Traffic Flow Program information (AFP, GDP, GS).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="reroute" type="nas:NasRerouteType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>A container for information pertinent to a reroute issued for the flight.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="lastUpdateTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Provides the date/time when the Traffic Flow Management Initiative was created or updated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lastUpdateType" type="nas:TfmProgramUpdateTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Defines if the flight is a New/Popup, Dropout, or Update relative to this Traffic Flow Management Initiative</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfdmTmiIdentifier" type="nas:TfdmTmiIdentifierType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The unique identifier of a traffic management initiative from the TFDM system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TfdmTmiIdentifierType">
+		<xs:annotation>
+			<xs:documentation>An identifier, includes the TFDM source facility as well as an identification number local to that system.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="aerodrome" type="fb:LocationIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>TFDM source facility.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identification" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Identification number local to the TFDM instance.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TmiComplianceType">
+		<xs:annotation>
+			<xs:documentation>Container for Traffic Management Initiative Compliance Indicators</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ctaCompliance" type="nas:TmiComplianceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Indicates the flight's actual arrival compliance at an airport (for a Ground Delay Program) or at a Flow Constrained Area (for an Airspace Flow Program) in reference to the controlled time of arrival issued.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ctdCompliance" type="nas:TmiComplianceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> This element indicates that a flight took off outside the Controlled Time of Departure compliance window (for both Ground Delay Program and Airspace Flow Program)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="eteCompliance" type="nas:TmiComplianceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the flight's actual en route flying time between the departure and the destination airports (for a Ground Delay Program) or from the departure airport to the Flow Constraint Area entry point was outside the compliance time range.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

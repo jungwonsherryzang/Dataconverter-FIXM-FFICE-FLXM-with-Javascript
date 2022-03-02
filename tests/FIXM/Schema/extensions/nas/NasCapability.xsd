@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>Package contains NAS specific extension to the FIXM Core Capability package.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:simpleType name="NasAirborneEquipmentQualifierType">
+		<xs:annotation>
+			<xs:documentation>A value assigned to the aircraft, based on its separation standard, navigational equipment, whether or not it has a transponder, and, if it has a transponder, whether the transponder supports Mode C.
+
+Code definitions show:
+Separation Standard / Navigation Capability / Transponder Capability
+
+RVSM: Reduced Vertical Separation Minimum
+RNAV: Area Navigation
+GNSS: Global Navigation Satellite System
+DME: Distance Measuring Equipment
+TACAN: Tactical Air Navigation System</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="H">
+				<xs:annotation>
+					<xs:documentation>RVSM / Any navigation / Failed transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="O">
+				<xs:annotation>
+					<xs:documentation>RVSM / Any navigation / Failed Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="W">
+				<xs:annotation>
+					<xs:documentation>RVSM / No RNAV, No GNSS / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Z">
+				<xs:annotation>
+					<xs:documentation>RVSM / RNAV, No GNSS / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="L">
+				<xs:annotation>
+					<xs:documentation>RVSM / GNSS / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="X">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / No DME / No transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / No DME / Transponder, no Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="U">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / No DME / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / DME / No transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / DME / Transponder, no Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="A">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / DME / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="M">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / TACAN / No transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="N">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / TACAN / Transponder, no Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="P">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / TACAN / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Y">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / RNAV, No GNSS / No transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / RNAV, No GNSS / Transponder, no Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="I">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / RNAV, No GNSS / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="V">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / GNSS / No transponder</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / GNSS / Transponder, no Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="G">
+				<xs:annotation>
+					<xs:documentation>Non-RVSM / GNSS / Transponder with Mode C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Q">
+				<xs:annotation>
+					<xs:documentation>Legacy Code - RVSM with Required Navigational Performance (see code R)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="R">
+				<xs:annotation>
+					<xs:documentation>Legacy Code - Required Navigational Performance. The aircraft meets the RNP type prescribed for the route segment(s), route(s) and/or area concerned.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NasPerformanceBasedNavigationPhaseType">
+		<xs:annotation>
+			<xs:documentation>The phase of flight for which navigation performance is being recorded.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEPARTURE"/>
+			<xs:enumeration value="ARRIVAL"/>
+			<xs:enumeration value="ENROUTE"/>
+			<xs:enumeration value="OCEANIC"/>
+			<xs:enumeration value="SPARE_1"/>
+			<xs:enumeration value="SPARE_2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PerformanceBasedAccuracyTypeType">
+		<xs:annotation>
+			<xs:documentation>This is an enumeration indicating whether the accuracy measure in Performance-Based Navigation Accuracy is measuring Area Navigation (RNAV) or Required Navigation Performance (RNP).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RNV"/>
+			<xs:enumeration value="RNP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RnavIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates if the flight is RNAV capable</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RNAV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NasNavigationCapabilitesType">
+		<xs:annotation>
+			<xs:documentation>NAS specific extensions to navigation capability information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:NavigationCapabilitiesExtensionType">
+				<xs:sequence>
+					<xs:element name="equipmentQualifier" type="nas:NasAirborneEquipmentQualifierType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>A value assigned to the aircraft based on its separation standard, navigational equipment, whether or not it has a transponder, and, if it has a transponder, whether the transponder supports Mode C.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="performanceBasedAccuracy" type="nas:PerformanceBasedAccuracyType" minOccurs="0" maxOccurs="99" nillable="true">
+						<xs:annotation>
+							<xs:documentation>NAS extension for Performance-Based Navigation Accuracy.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rnavIndicator" type="nas:RnavIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates if the flight is RNAV capable</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerformanceBasedAccuracyType">
+		<xs:annotation>
+			<xs:documentation>NAS extension for Performance-Based Navigation Accuracy.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accuracy" type="fb:DistanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>This is the flight's navigation accuracy value for the phase of flight, specified in the Performance-Based Navigation Phase.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="phase" type="nas:NasPerformanceBasedNavigationPhaseType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The phase of flight for which navigation performance is being recorded.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="nas:PerformanceBasedAccuracyTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>This is an enumeration indicating whether the accuracy measure in Performance-Based Navigation Accuracy is measuring Area Navigation (RNAV) or Required Navigation Performance (RNP).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

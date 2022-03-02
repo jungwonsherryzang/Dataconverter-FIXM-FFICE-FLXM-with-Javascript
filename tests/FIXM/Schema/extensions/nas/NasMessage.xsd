@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:msg="http://www.fixm.aero/app/msg/1.0" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>NAS extension of the FIXM basic message structure.  Contains NAS-specific metadata and makes use of basic message's MessageCollection for bundling information about multiple flights into one message.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:import namespace="http://www.fixm.aero/app/msg/1.0" schemaLocation="../../applications/basicmessage/BasicMessage.xsd"/>
+	<xs:simpleType name="EramWarningTypeType">
+		<xs:annotation>
+			<xs:documentation>ERAM warning types.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AMD_FREQUENCY"/>
+			<xs:enumeration value="MERGE_ANGLE"/>
+			<xs:enumeration value="MODIFIED_FLT_DATA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SensitivityType">
+		<xs:annotation>
+			<xs:documentation>Sensitivity of the message.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AsdexConfidenceType">
+		<xs:annotation>
+			<xs:documentation>Confidence of the  ASDE-X position accuracy. 	</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="navigationIntegrityCategory" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Navigation Integrity Category
+
+0: equal to 20 NM or Unknown
+1: less than 20 NM
+2: less than 8 NM
+3: less than 4 NM
+4: less than 2 NM
+5: less than 1 NM
+6: less than 0.6 NM
+7: less than 0.2 NM
+8: less than 0.1 NM
+9: less than 75  m
+10: less than 25 m
+11: less than 7.5 m</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="positionNavigationAccuracyCategory" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Navigation Accuracy Category for Position.
+
+0: equal to 10 NM
+1: less than 10 NM
+2: less than 4 NM
+3: less than 2 NM
+4: less than 1 NM
+5: less than 0.5 NM
+6: less than 0.3 NM
+7: less than 0.1 NM
+8: less than 0.05 NM
+9: less than 30 m
+10: less than 10 m
+11: less than 3 m</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sourceIntegrityLevel" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Source integrity level - probability of exceeding NIC Containment Radius
+
+0: Unknown
+1: less than 10-3
+2: less than 10-5
+3: less than 10-7</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EramResponseChoiceType">
+		<xs:annotation>
+			<xs:documentation>Container for error or warning messages from ERAM regarding an amendment request.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="errorResponse" type="fb:CharacterStringType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Error response.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="warningResponse" type="nas:EramWarningResponseType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Warning response from ERAM.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EramWarningResponseType">
+		<xs:annotation>
+			<xs:documentation>Warning response from ERAM.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="message" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Warning Message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="nas:EramWarningTypeType" minOccurs="0" maxOccurs="10" nillable="true">
+				<xs:annotation>
+					<xs:documentation>ERAM wanring type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageMetadataType">
+		<xs:annotation>
+			<xs:documentation>The MessageMetadata provides a unique message identifier, the origin of the message in time and location, the system that produced the message, and the time span over which the message data is valid.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="asdexConfidence" type="nas:AsdexConfidenceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Confidence of the ASDE-X system regarding the position accuracy.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="eramResponse" type="nas:EramResponseChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Error or warning messages from ERAM regarding an amendment request.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="provenance" type="nas:MessageProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Message provenance data. Can be used by system to describe details involved in sending the message including source, center and system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sensitivity" type="nas:SensitivityType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Sensitivity of the message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sensitivityReason" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Reason for the message sensitivity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sequenceNumber" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Used to ensure message order is maintained regardless of delivery mechanism.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trigger" type="nas:TriggerType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Container for Message Trigger information such as the type of trigger and timestamp.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageProvenanceType">
+		<xs:annotation>
+			<xs:documentation>Message provenance data. Can be used to describe details involved in sending the message including the airport, center, system, and/or TRACON that produced the data contained in the message and the time at which it was produced.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airport" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The airport that produced the data contained in the Message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="center" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The ATC center (or FIR) that produced the data contained in the Message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The source that produced the data contained in the Message, if the source is not an ATC facility.
+While this field has no formal definition, it might take values such as:
+
+- an Airline Operations Center (AOC) 
+- a Traffic Flow center  
+- an international data provider  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="system" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The name of the system that generated the data contained in the Message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timestamp" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time at which the provenance information was recorded.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tracon" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The TRACON that produced the data contained in the Message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasMessageType">
+		<xs:annotation>
+			<xs:documentation>NAS specific extensions to Message information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="msg:MessageExtensionType">
+				<xs:sequence>
+					<xs:element name="metadata" type="nas:MessageMetadataType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The MessageMetadata provides a unique message identifier, the origin of the message in time and location, the system that produced the message, and the time span over which the message data is valid.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NasMessageCollectionType">
+		<xs:annotation>
+			<xs:documentation>NAS specific extensions to MessageCollection information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="msg:MessageCollectionExtensionType">
+				<xs:sequence>
+					<xs:element name="metadata" type="nas:MessageMetadataType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The MessageMetadata provides a unique message identifier, the origin of the message in time and location, the system that produced the message, and the time span over which the message data is valid.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TriggerType">
+		<xs:annotation>
+			<xs:documentation>Container for Message Trigger information such as the type of trigger and timestamp.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timestamp" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Trigger timestamp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="triggerType" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Describes the message trigger type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

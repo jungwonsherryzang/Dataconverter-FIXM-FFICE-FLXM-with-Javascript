@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>The NasAircraft package contains the NAS specific extensions to the FIXM Core Aircraft package.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:simpleType name="EngineTypeType">
+		<xs:annotation>
+			<xs:documentation>The category of the aircraft  engine.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PISTON"/>
+			<xs:enumeration value="JET"/>
+			<xs:enumeration value="TURBO"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsAircraftCategoryType">
+		<xs:annotation>
+			<xs:documentation>Indicates the category of the aircraft operating the flight</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SINGLE_PISTON_PROP"/>
+			<xs:enumeration value="MULTI_PISTON_PROP"/>
+			<xs:enumeration value="SINGLE_TURBO_PROP"/>
+			<xs:enumeration value="MULTI_TURBO_PROP"/>
+			<xs:enumeration value="CIVILIAN_JET"/>
+			<xs:enumeration value="MILITARY_FIGHTER_JET"/>
+			<xs:enumeration value="MILITARY_LARGE_JET"/>
+			<xs:enumeration value="SPECIAL_TURBO_JET"/>
+			<xs:enumeration value="HELICOPTER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsAircraftWeightClassType">
+		<xs:annotation>
+			<xs:documentation>Describes an aircraft's weight category</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SMALL"/>
+			<xs:enumeration value="LARGE"/>
+			<xs:enumeration value="HEAVY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsSpecialAircraftQualifierType">
+		<xs:annotation>
+			<xs:documentation>Indicates the flight is a heavy jet, B757 or, if not present, a large jet and if the flight is either equipped or not with TCAS. This indicator is used for output purposes such as strip printing and message transfers to other facilities such as Automated Radar Terminal System (ARTS). </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HEAVY_JET">
+				<xs:annotation>
+					<xs:documentation>Capable of takeoff weights of 300,000 pounds or more</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TCAS">
+				<xs:annotation>
+					<xs:documentation>Traffic collision avoidance system or traffic alert and collision avoidance system</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B757">
+				<xs:annotation>
+					<xs:documentation>Controllers are required to apply the special wake turbulence separation criteria for the Boeing 757. </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B757_TCAS">
+				<xs:annotation>
+					<xs:documentation>Boeing 757 with traffic collision avoidance system</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HEAVY_JET_AND_TCAS">
+				<xs:annotation>
+					<xs:documentation>Capable of takeoff weights of 300,000 pounds or more and traffic collision avoidance system.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WAKE_TURBULENCE"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WakeTurbulenceCategoryExtendedType">
+		<xs:annotation>
+			<xs:documentation>NAS classification of the aircraft wake turbulence, based on wingspan and Maximum Takeoff Weight (MTOW).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A">
+				<xs:annotation>
+					<xs:documentation> Aircraft capable of MTOW of 300,000 pounds or more and a wingspan greater than 245 feet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation>Aircraft capable of MTOW of 300,000 pounds or more and a wingspan greater than 175 feet and less than or equal to 245 feet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C">
+				<xs:annotation>
+					<xs:documentation>Aircraft capable of a MTOW of 300,000 pounds or more and a wingspan greater than 125 feet and less than or equal to 175 feet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D">
+				<xs:annotation>
+					<xs:documentation> Aircraft capable of a MTOW of less than 300,000 pounds and a wingspan greater than 125 feet and less than or equal to 175 feet, or aircraft with a wingspan greater than 90 feet and less than or equal to 125 feet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="E">
+				<xs:annotation>
+					<xs:documentation> Aircraft capable of a MTOW greater than 41,000 pounds with a wingspan greater than 65 feet and less than or equal to 90 feet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="F">
+				<xs:annotation>
+					<xs:documentation>Aircraft capable of a MTOW of less than 41,000 pounds and a wingspan less than or equal to 125 feet, or aircraft capable of a MTOW less than 15,500 pounds regardless of wingspan, or a powered sailplane.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NasAircraftType">
+		<xs:annotation>
+			<xs:documentation>NAS specific extensions to aircraft information.
+            </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:AircraftExtensionType">
+				<xs:sequence>
+					<xs:element name="engineType" type="nas:EngineTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The category of the aircraft  engine.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nasWakeTurbulence" type="nas:WakeTurbulenceCategoryExtendedType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>NAS classification of the aircraft wake turbulence, based on wingspan and Maximum Takeoff Weight (MTOW).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsAircraftCategory" type="nas:TfmsAircraftCategoryType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the category of the aircraft operating the flight</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsAircraftWeightClass" type="nas:TfmsAircraftWeightClassType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Describes an aircraft's weight category</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsSpecialAircraftQualifier" type="nas:TfmsSpecialAircraftQualifierType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the flight is a heavy jet, B757 or, if not present, a large jet and if the flight is either equipped or not with TCAS. This indicator is used for output purposes such as strip printing and message transfers to other facilities such as Automated Radar Terminal System (ARTS). </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

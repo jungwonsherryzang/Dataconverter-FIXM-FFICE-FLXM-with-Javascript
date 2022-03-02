@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Package contains the NAS specific extensions to the FIXM core Arrival package.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:include schemaLocation="NasFlightIntent.xsd"/>
+	<xs:include schemaLocation="NasTmiConstrainedAirspace.xsd"/>
+	<xs:include schemaLocation="NasAirspace.xsd"/>
+	<xs:simpleType name="ArrivalStandAvailableIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the arrival stand is available.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ARRIVAL_STAND_AVAILABLE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PredictedGateConflictIndicatorType">
+		<xs:annotation>
+			<xs:documentation>The predicted gate conflict within TFDM.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PREDICTED_GATE_CONFLICT">
+				<xs:annotation>
+					<xs:documentation>Indicates gate conflict is predicted.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsEstimatedArrivalTypeType">
+		<xs:annotation>
+			<xs:documentation>The type for the estimated runway arrival time determined by Traffic Flow Management System (TFMS).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACTUAL"/>
+			<xs:enumeration value="ESTIMATED"/>
+			<xs:enumeration value="PROPOSED"/>
+			<xs:enumeration value="SCHEDULED"/>
+			<xs:enumeration value="AIRLINE"/>
+			<xs:enumeration value="CONTROLLED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NasArrivalType">
+		<xs:annotation>
+			<xs:documentation>Extends core Flight  Arrival with NAS specific Extensions.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:ArrivalExtensionType">
+				<xs:sequence>
+					<xs:element name="airportMonitoringStatus" type="nas:AirportMonitoringStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the arrival airport for the flight is monitored by traffic flow management.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalCenter" type="fb:AtcUnitReferenceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the Air Route Traffic Control Center (ARTCC) for the arrival point for a flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalFix" type="nas:NasSignificantPointInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The point at which the responsibility for control of the flight is transferred from the En Route Air Traffic Control unit (Centre, ARTCC) to the Terminal Air Traffic Control unit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalPoint" type="fb:SignificantPointChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Represents non-aerodrome points of actual arrival.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalPointText" type="fb:TextNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Actual arrival point information specified in free text format.  Examples:
+Airport: GCW
+Lat/Lon: 3500N/04000W
+FRD: SHP090015</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalSpotActual" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The location on the surface where the aircraft exited the airport movement area after arrival at the airport.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalSpotIntended" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates the location intended for the flight to enter the non-movement area from the airport movement area.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalSpotPredicted" type="nas:NasSpotInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The predicted location on the surface where the aircraft will exit the airport movement area after arrival at the airport.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalStandAvailableIndicator" type="nas:ArrivalStandAvailableIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the arrival stand is available.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalTaxiTime" type="nas:NasArrivalTaxiTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Container for NAS-specific taxi arrival times.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="destinationPoint" type="fb:SignificantPointChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Represents non-aerodrome points of intended landing.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="destinationPointText" type="fb:TextNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Intended destination point information specified in free text format.  Examples:
+Airport: GCW
+Lat/Lon: 3500N/04000W
+FRD: SHP090015</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="estimatedArrivalFixTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Estimated time over the arrival fix.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="inBlockTime" type="nas:NasInBlockTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains information about flight  gate arrival time.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="movementAreaActualExitTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time at which a flight actually exited  the Airport Movement Area (AMA).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="movementAreaHoldInformation" type="nas:MovementAreaHoldInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Information about a flight intending to hold or holding in the movement area due to unavailability of a parking stand or ramp access, and the times associated with the flight entering and exiting the hold in the movement area.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nonMovementAreaHoldIntent" type="nas:HoldIntentType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the intent for a flight to hold in the airport non-movement area due to unavailability of a parking stand or ramp access.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="predictedGateConflict" type="nas:PredictedGateConflictIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates a predicted gate conflict.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rampArea" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Flight specific ramp area assignment for an arrival.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayArrivalTime" type="nas:NasRunwayArrivalTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains the NAS Specific arrival times.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayInformation" type="nas:NasRunwayInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Information on the predicted, assigned, and/or actual arrival runway for the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayUnassignedDesignator" type="nas:RunwayUnassignedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates that the runway associated with a flight is unassigned.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="slotYielded" type="nas:SlotYieldedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates the slot currently specified in   Runway Arrival Time - Controlled   is to be given up by the Airspace User in return for a later slot.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="standInformation" type="nas:NasStandInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The name of the destination stand assignment. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="starTransitionFix" type="nas:NasSignificantPointInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The name for the Standard Terminal Arrival Route Transition Fix</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stddsSpotIn" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Surface Event as determined by a surface movement service.  This event represents when a flight has exited a movement area and transitioned into a ramp area.  </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stddsWheelsOn" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Surface Event as determined by a surface movement service.  This event represents when a flight has touched down on the ground during a landing.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsStar" type="nas:InstrumentRouteDesignatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> The textual designator of the Standard Instrument Arrival (STAR). </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NasArrivalTaxiTimeType">
+		<xs:annotation>
+			<xs:documentation>Container for NAS-specific taxi arrival times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elapsedArrivalTaxiTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The elapsed taxi time for an arrival aircraft, from the runway to the spot crossing, exiting the movement area.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedArrivalMovementAreaTransitTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated taxi time from the arrival runway exit to the ramp area entry point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedArrivalRampTransitTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated taxi time from the entry point in the ramp area to the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalEstimatedTaxiInTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The total estimated taxi in time from the arrival runway exit to the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasInBlockTimeType">
+		<xs:annotation>
+			<xs:documentation>Contains information about flight  gate arrival time.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actual" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time at which a flight arrives at the stand as reported by a specified source.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimated" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated in-block time for a flight as reported by a specified source.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initial" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The original stand arrival time of the flight when the flight is first created.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scheduled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Scheduled gate time of arrival for a flight, as provided by the OAG (Official Airline Guide).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayArrivalEstimatedType">
+		<xs:annotation>
+			<xs:documentation>The estimated time of runway arrival as provided by a specified source.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="estimatedType" type="nas:TfmsEstimatedArrivalTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The type for the estimated runway arrival time determined by Traffic Flow Management System (TFMS).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reportedTime" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The reported estimated runway arrival time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayArrivalTimeType">
+		<xs:annotation>
+			<xs:documentation>Container for NAS Specific Runway Arrival Times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actual" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains information about actual runway time.
+The actual runway arrival time, as reported by a source.
+
+This field in the U.S. extension is used in order to allow providing provenance source data.  Actual arrival time that does not include provenance source data should be recorded in Core.Flight.Arrival.actualTimeOfArrival. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="base" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The last Runway Arrival Time - Traffic Flow Management System Estimated modeled by TFMS before either a Traffic Management Initiative (TMI) is issued, or the flight departs, and includes any time-out delay modeled by TFMS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time at which a flight is required to touch down at the runway, as a result of a tactical slot allocation or a Traffic Management Initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="earliest" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The earliest acceptable arrival time provided by the Airspace user for a flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimated" type="nas:NasRunwayArrivalEstimatedType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Runway arrival time estimated by a specified source.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="original" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The last Runway Arrival Time - Traffic Flow Management System Estimated modeled by TFMS before either a Traffic Management Initiative (TMI) is issued, or the flight departs, or the flight is  time-out  delayed by TFMS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="originalControlled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The first controlled arrival time (CTA) issued for a flight for the control element which currently controls the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preferred" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A runway arrival time which, when considered in aggregate with other flights for that Airspace User, indicates the preferred arrival sequence.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="slotSubstitution" type="nas:RunwayAcceptableSlotSubstitutionType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The latest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP), in return for a yielded slot.
+The earliest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP) in return for a yielded slot.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RunwayAcceptableSlotSubstitutionType">
+		<xs:annotation>
+			<xs:documentation>The latest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP), in return for a yielded slot.
+The earliest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP) in return for a yielded slot.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="earliest" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The earliest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP) in return for a yielded slot.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="latest" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The latest time at which the Airspace user will accept a slot in a Traffic Management Initiative (TMI) Ground Delay Program (GDP), in return for a yielded slot.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

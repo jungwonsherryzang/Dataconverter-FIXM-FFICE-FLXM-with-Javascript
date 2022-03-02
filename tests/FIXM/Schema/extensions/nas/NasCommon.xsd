@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Defines commonly used NAS fields that are shared among several packages.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:simpleType name="AirportMonitoringStatusType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the airport for the flight is monitored by traffic flow management.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MONITORED"/>
+			<xs:enumeration value="NOT_MONITORED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterString20Type">
+		<xs:annotation>
+			<xs:documentation>Size-limited CharacterString restricting data to a length of 1 to 20 characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterString250Type">
+		<xs:annotation>
+			<xs:documentation>Size-limited CharacterString restricting data to a length of 1 to 250 characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterString60Type">
+		<xs:annotation>
+			<xs:documentation>Size-limited CharacterString restricting data to a length of 1 to 60 characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControlExemptIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the flight was processed as exempt from the Traffic Flow Management Initiative</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EXEMPT"/>
+			<xs:enumeration value="NOT_EXEMPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NasConformanceStatusType">
+		<xs:annotation>
+			<xs:documentation>Provides the conformance status for a flight with the associated Traffic Management Initiative.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="NC"/>
+			<xs:enumeration value="UNKN"/>
+			<xs:enumeration value="EXC"/>
+			<xs:enumeration value="OK"/>
+			<xs:enumeration value="NC/OK"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RunwayUnassignedIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates that the runway associated with a flight is unassigned.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RUNWAY_UNASSIGNED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SlotAssignmentType">
+		<xs:annotation>
+			<xs:documentation>Arrival or departure slot assignment.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[a-zA-Z0-9]{3,6}[.]{1}[0-9]{12}[a-zA-Z]{1}|NOSLOT|PURGED|REMOVED|UNUSED|UNASSIGNED|UNAVAILABLE|PURGED_PLANNED|PURGED_ACTIVE_COMPLETED|ALL PROGRAMS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SourceType">
+		<xs:annotation>
+			<xs:documentation>Source of the report.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIRSPACE_USER"/>
+			<xs:enumeration value="TFDM"/>
+			<xs:enumeration value="TFMS"/>
+			<xs:enumeration value="STARS"/>
+			<xs:enumeration value="TBFM"/>
+			<xs:enumeration value="TDLS"/>
+			<xs:enumeration value="ERAM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SurfaceRegionNameType">
+		<xs:annotation>
+			<xs:documentation>The name of a surface region (spot, ramp, etc.).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[A-Za-z0-9_]{1,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NameValueListType">
+		<xs:annotation>
+			<xs:documentation>A basic list of name/value pairs.
+
+The name/value list structure is intended for use in the RARE situations where otherwise unstructured data can be rendered into a semi-structure of tags and data. It is not appropriate for adding arbitrary data to arbitrary places in the schema.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="nameValue" type="nas:NameValuePairType" minOccurs="0" maxOccurs="20" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A set of up to 20 name-value pairs.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NameValuePairType">
+		<xs:annotation>
+			<xs:documentation>This is a general purpose data structure used when it is desired to map an identifying string (the "name") into a data string (the "value"). These name/value pairs are often part of a repeating element so that the whole element expresses a set of names mapped onto a set of values.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The identifying portion of the pair, formatted as if for an enumeration. Consider using an actual enumeration for legal values.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The data content portion of the pair. This is intended for a *short* unstructured string like a natural language comment, and should not be used as storage for codes, values, or other structured data.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasHoldingLocationInformationType">
+		<xs:annotation>
+			<xs:documentation>Contains supplementary provenance information and the holding location.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="holdingLocation" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The expected location where the flight will be holding. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasIntersectedAirspaceType">
+		<xs:annotation>
+			<xs:documentation>Constrained airspace intersected by the flight.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airspaceIdentifier" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Unique Identifier for the constrained airspace to be traversed by the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="earliestAirspaceEntryTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The earliest time the flight could enter the constrained airspace.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayType">
+		<xs:annotation>
+			<xs:documentation>Contains supplementary provenance information for the runway designator.
+
+This field in the U.S. extension is used in order to allow providing provenance source data.  An actual runway designator that does not include provenance source data should be recorded in Core's runwayDirection field.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="runwayDesignator" type="fb:RunwayDirectionDesignatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The runway designator.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayInformationType">
+		<xs:annotation>
+			<xs:documentation>Container for representing information on the predicted, assigned, and/or actual runway.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actual" type="nas:NasRunwayType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The actual runway for the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="assigned" type="nas:NasRunwayType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The assigned runway for the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="predicted" type="nas:NasRunwayType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The predicted runway for the flight (considers the "scheduled" airport configuration).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasSignificantPointInformationType">
+		<xs:annotation>
+			<xs:documentation>Contains supplementary provenance information and the significant point.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="significantPoint" type="fb:SignificantPointChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The significant point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasSpotInformationType">
+		<xs:annotation>
+			<xs:documentation>Contains supplementary provenance information and information for the spot.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="spotRegion" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The spot region</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasStandInformationType">
+		<xs:annotation>
+			<xs:documentation>Contains the name of the aircraft stand.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="standName" type="nas:CharacterString20Type" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Name of the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProvenanceType">
+		<xs:annotation>
+			<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="reportedTimestamp" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the timestamp of when the information was reported.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="nas:SourceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Source of the reported information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReportedTimeType">
+		<xs:annotation>
+			<xs:documentation>Represents time that was reported by a source including the source and timestamp of when the time was reported</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="nas:ProvenanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains the provenance information such as the reported timestamp and the source of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="time" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Time which is the subject of the ReportedTime.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

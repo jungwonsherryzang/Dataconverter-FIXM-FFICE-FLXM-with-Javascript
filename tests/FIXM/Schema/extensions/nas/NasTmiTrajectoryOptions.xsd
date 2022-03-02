@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fx="http://www.fixm.aero/flight/4.2" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Contains the definitions for NAS specific trajectory options that support the CTOP program.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:import namespace="http://www.fixm.aero/flight/4.2" schemaLocation="../../core/flight/Flight.xsd"/>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:include schemaLocation="NasRoute.xsd"/>
+	<xs:simpleType name="AssignedIndicatorType">
+		<xs:annotation>
+			<xs:documentation>An indication whether the trajectory option has been assigned by the Air Navigation Service Provider (ANSP).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="NOT_ASSIGNED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConstrainedAirspaceRemarksType">
+		<xs:annotation>
+			<xs:documentation>Indicates the source of the trajectory data that TFMS used for the trajectory assignment.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ADCUS"/>
+			<xs:enumeration value="AIREVAC"/>
+			<xs:enumeration value="ALTRV"/>
+			<xs:enumeration value="CATIII"/>
+			<xs:enumeration value="DIVERT"/>
+			<xs:enumeration value="DVRSN"/>
+			<xs:enumeration value="FCA"/>
+			<xs:enumeration value="HAR"/>
+			<xs:enumeration value="HOSP"/>
+			<xs:enumeration value="ICR"/>
+			<xs:enumeration value="MEDEVAC"/>
+			<xs:enumeration value="NRP"/>
+			<xs:enumeration value="PTP"/>
+			<xs:enumeration value="RR"/>
+			<xs:enumeration value="SWAP"/>
+			<xs:enumeration value="WXRTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConstrainedAirspaceRemarksListType">
+		<xs:restriction base="nas:ConstrainedAirspaceRemarksType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CtopConformanceIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Provides the conformance status for a flight with the Collaborative Trajectory Options Program.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CONFORMANT"/>
+			<xs:enumeration value="NON_CONFORMANT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CtopControlledIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates Collaborative Trajectory Options Program control.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CONTROLLED"/>
+			<xs:enumeration value="NOT_CONTROLLED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CtopExemptReasonType">
+		<xs:annotation>
+			<xs:documentation>Indicates the reason for a flight being exempted from the Collaborative Trajectory Options Program</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NON_EXEMPT"/>
+			<xs:enumeration value="MANUAL"/>
+			<xs:enumeration value="ACID"/>
+			<xs:enumeration value="INTERNATIONAL"/>
+			<xs:enumeration value="ANOTHER_CTOP"/>
+			<xs:enumeration value="TIME"/>
+			<xs:enumeration value="ARR_ARPT"/>
+			<xs:enumeration value="DEP_ARPT"/>
+			<xs:enumeration value="ARR_ARTCC"/>
+			<xs:enumeration value="DEP_ARTCC"/>
+			<xs:enumeration value="ACTIVE"/>
+			<xs:enumeration value="AFP"/>
+			<xs:enumeration value="GDP"/>
+			<xs:enumeration value="GS"/>
+			<xs:enumeration value="PARAM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CtopRouteOutIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates that the assigned trajectory option is routed out of the Collaborative Trajectory Options Program</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CTOP_ROUTE_OUT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ManualOverrideIndicatorType">
+		<xs:annotation>
+			<xs:documentation>An indication whether a trajectory was either selected manually by a traffic manager from the available trajectory options or was entered manually by a traffic manager.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MANUAL_OVERRIDE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrajectorySourceType">
+		<xs:annotation>
+			<xs:documentation>The source of the trajectory data used by the Traffic Flow Management System for a flight as part of Collaborative Trajectory Options Program allocation</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FILED_FLIGHT_PLAN"/>
+			<xs:enumeration value="CTOP_ASSIGNED"/>
+			<xs:enumeration value="CTOP_MANUAL_ASSIGNED"/>
+			<xs:enumeration value="TOS_OPTION"/>
+			<xs:enumeration value="TFMS_REROUTE"/>
+			<xs:enumeration value="EARLY_INTENT"/>
+			<xs:enumeration value="HISTORICAL_ROUTE"/>
+			<xs:enumeration value="DIRECT_ROUTE"/>
+			<xs:enumeration value="CTOP_ASSIGNED_MODEL"/>
+			<xs:enumeration value="CTOP_MANUAL_ASSIGNED_MODEL"/>
+			<xs:enumeration value="TACTICAL_REROUTE"/>
+			<xs:enumeration value="DYNAMIC_EXCEPTION"/>
+			<xs:enumeration value="DYNAMIC_EXCEPTION_MODEL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrajectorySourceNewType">
+		<xs:annotation>
+			<xs:documentation>The new source of the trajectory data used by the Traffic Flow Management System for a flight as part of Collaborative Trajectory Options Program allocation</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TOS"/>
+			<xs:enumeration value="FP"/>
+			<xs:enumeration value="EIFP"/>
+			<xs:enumeration value="HIST"/>
+			<xs:enumeration value="MANUAL"/>
+			<xs:enumeration value="DIRECT"/>
+			<xs:enumeration value="REROUTE"/>
+			<xs:enumeration value="TACTICAL_REROUTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CollaborativeTrajectoryOptionsProgramType">
+		<xs:annotation>
+			<xs:documentation>Container for information pertaining to definition of Collaborative Trajectory Options Program</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="additionalAirborneTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the additional amount of flying time assigned to the flight by the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="assignedGroundDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Provides the amount of ground delay assigned to the flight by the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="assignedSlot" type="nas:SlotAssignmentType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>When a TMI is issued, each controlled flight is assigned an arrival slot.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="conformance" type="nas:CtopConformanceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains Collaborative Trajectory Options Program conformance information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlExemptIndicator" type="nas:ControlExemptIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the flight was processed as exempt from the Traffic Flow Management Initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlExemptReason" type="nas:CtopExemptReasonType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the reason for a flight being exempted from the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ctopIdentifier" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The Traffic Flow Management System generated unique identifier for the Collaborative Trajectory Options Program.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ctopName" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The name for the Collaborative Trajectory Options Program as defined by the traffic manager.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ctopRouteOut" type="nas:CtopRouteOutIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates that the assigned trajectory option is routed out of the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flightControlledIndicator" type="nas:CtopControlledIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Indicates if the flight is controlled by this Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lastRouteAmendment" type="nas:NasRouteAmendmentType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Collaborative Trajectory Options Program Last Route Amendment Information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preImplicitSubstitution" type="nas:PreImplicitSubstitutionType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A container which provides the flight information for a flight which was valid prior to an implicit substitution</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relativeFlightPriority" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Relative priority of a flight compared to other flights for the same airspace user.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="remarks" type="nas:ConstrainedAirspaceRemarksListType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A comma separated list of remarks.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="routeControlledIndicator" type="nas:CtopControlledIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates if the flight's route is controlled by this Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tosSequenceNumber" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Provides the sequence number for the Trajectory Option Set submitted by the airspace user</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectoryOption" type="nas:NasTrajectoryOptionType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A container for information pertinent to a single trajectory option for a flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectorySource" type="nas:TrajectorySourceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A container which provides the flight information for a flight which was valid prior to an implicit substitution</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectorySourceNew" type="nas:TrajectorySourceNewType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The new source of the trajectory data used by the Traffic Flow Management System for a flight as part of Collaborative Trajectory Options Program allocation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CtopConformanceType">
+		<xs:annotation>
+			<xs:documentation>Collaborative Trajectory Options Program conformance information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="altitudeConformance" type="nas:CtopConformanceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the altitude conformance status for a flight with the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="routeConformance" type="nas:CtopConformanceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the route conformance status for a flight with the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="speedConformance" type="nas:CtopConformanceIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the speed conformance status for a flight with the Collaborative Trajectory Options Program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="nas:NasConformanceStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the conformance status for a flight with the Collaborative Trajectory Options Program.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CtopParsedRouteType">
+		<xs:annotation>
+			<xs:documentation>A container for the parsed route associated with the Trajectory Option.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="element" type="fx:RouteTrajectoryElementType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A route element defined by a Significant Point and the ATS Route (or direct route) along with any route changes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasTrajectoryOptionType">
+		<xs:annotation>
+			<xs:documentation>A container for information pertinent to a single trajectory option for a flight.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="assignedIndicator" type="nas:AssignedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>An indication whether the trajectory option has been assigned by the Air Navigation Service Provider (ANSP).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cruisingLevel" type="fb:FlightLevelType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The filed altitude (flight level) for the first or the whole cruising portion of the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cruisingSpeed" type="fb:TrueAirspeedType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The true airspeed for the first or the whole cruising portion of the flight.  This can be for a filed flight or an active flight.  This element is strategic in nature. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intersectedAirspace" type="nas:NasIntersectedAirspaceType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Constrained airspace intersected by the flight following this Trajectory Option.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="manualOverride" type="nas:ManualOverrideIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>An indication whether a trajectory was either selected manually by a traffic manager from the available trajectory options or was entered manually by a traffic manager.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minimumNotificationMinutes" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The minimum notification time, relative to off block departure time, the airspace user needs for a trajectory option to be assigned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parsedRoute" type="nas:CtopParsedRouteType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A container for the parsed route associated with the Trajectory Option.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relativeCost" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The relative cost of the trajectory option as compared to another trajectory option.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="routeText" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A string of route elements complying with PANS-ATM Item 15c</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalCost" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The total cost a flight would incur if this were the assigned trajectory option. It is the sum of the delay the option would have to assign the flight on this trajectory to avoid exceeding demand and the flight-operator provided relative trajectory cost.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectoryIndex" type="fb:CountPositiveType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Index used to differentiate the trajectory options for the purpose of generating replies.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validEndTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The latest runway departure time for which this trajectory can be used by this flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validStartTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The earliest runway departure time for which this trajectory can be used by this flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PreImplicitSubstitutionType">
+		<xs:annotation>
+			<xs:documentation> A container which provides the flight information for a flight which was valid prior to an implicit substitution</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="assignedSlot" type="nas:SlotAssignmentType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The assigned slot for a flight prior to an implicit substitution. The assigned slot is a time slot at an airport or an airspace entry point that identifies a point in time when an aircraft is constrained to arrive at the airport or airspace entry point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlledRunwayDepartureTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The controlled date and time of departure for the flight that was assigned prior to implicit substitution.The controlled date and time of departure represents the time at which a flight is required to take off from the runway as a result of a tactical slot allocation or a Traffic Management Initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectoryIdentifier" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The unique identifier for the trajectory that was assigned prior to implicit substitution.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="trajectoryTotalCost" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The total cost the flight was expected to incur for the assigned trajectory option prior to implicit substitution. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

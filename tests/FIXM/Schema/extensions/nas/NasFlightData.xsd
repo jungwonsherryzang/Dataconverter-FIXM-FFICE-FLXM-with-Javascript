@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fb="http://www.fixm.aero/base/4.2" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Contains the NAS Specific Flight definitions that extend the FIXM Core Flight.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:include schemaLocation="NasTmiData.xsd"/>
+	<xs:include schemaLocation="NasStatus.xsd"/>
+	<xs:simpleType name="ComputerIdentificationType">
+		<xs:annotation>
+			<xs:documentation>A unique identifier assigned by a particular system within a particular facility.  Typically ERAM within an ARTCC.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[A-Z0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ComputerIdSystemType">
+		<xs:annotation>
+			<xs:documentation>The system that assigned the computer identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TFMS"/>
+			<xs:enumeration value="HCS"/>
+			<xs:enumeration value="CTAS"/>
+			<xs:enumeration value="TBFM"/>
+			<xs:enumeration value="ETMS"/>
+			<xs:enumeration value="ERAM"/>
+			<xs:enumeration value="STDDS"/>
+			<xs:enumeration value="ODAPS"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CoordinationTimeTypeType">
+		<xs:annotation>
+			<xs:documentation>The indicator for the type of   Coordination Time  .</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="P">
+				<xs:annotation>
+					<xs:documentation>
+                  Proposed flight plan preparing for departure
+               </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D">
+				<xs:annotation>
+					<xs:documentation>
+                  Flight plan has departed from the departure airport
+               </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="E">
+				<xs:annotation>
+					<xs:documentation>
+                  Active flight plan, aircraft is flying.
+               </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DiversionRecoveryIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether a flight is in diversion recovery.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DIVERSION_RECOVERY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DiversionStateType">
+		<xs:annotation>
+			<xs:documentation>Indicator used to define the diversion state of a flight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIRBORN_NOCTL"/>
+			<xs:enumeration value="AIRBORN_CTL"/>
+			<xs:enumeration value="GROUND_NOCTL"/>
+			<xs:enumeration value="GROUND_CTL"/>
+			<xs:enumeration value="NO_DIVERSION"/>
+			<xs:enumeration value="DIVERSION_CANCELLED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightDelayReasonType">
+		<xs:annotation>
+			<xs:documentation>For a delayed flight, it provides the reason for the delay.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ALD">
+				<xs:annotation>
+					<xs:documentation>Indicates that the CDM Participant has at some point sent in a departure time estimate (via an FC or FM) for a flight that was later than the estimate previously in the database.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GDP">
+				<xs:annotation>
+					<xs:documentation>Indicates that the flight has at some point been controlled by a GDP-Initial or GDP-Revision.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AFP">
+				<xs:annotation>
+					<xs:documentation>Indicates that the flight has at some point been controlled by an AFP-Initial or AFP-Revision.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CTOP">
+				<xs:annotation>
+					<xs:documentation>Indicates that the flight has at some point been controlled by a CTOP-Initial or CTOP-Revision.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DAS">
+				<xs:annotation>
+					<xs:documentation>Indicates that a DAS delay has been applied to this flight.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GSD">
+				<xs:annotation>
+					<xs:documentation>Indicates the flight has at some point been part of a GDP-Ground Stop program.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TOD">
+				<xs:annotation>
+					<xs:documentation>Indicates that TFMS-Core is delaying this flight due to the fact that it has not departed as projected. The TOD status precedes a time out cancel (TO). A time out delay occurs when a flight has a flight plan message, its departure time is in the past, and it has not been activated yet. In this case, TFMS-Core moves the flight back in time in 5-minute increments until canceled by time out logic (see TO field). If TFMS-Core receives a new message for this flight moving its departure time into the future, the TOD flag is cleared indicating that the flight is no longer in time out delay. Time out delay logic is applied only to the same flight as time out cancel logic (see TO field).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightDelayReasonListType">
+		<xs:annotation>
+			<xs:documentation>Helper simpleType to allow for enumerated lists in FIXM.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="nas:FlightDelayReasonType"/>
+	</xs:simpleType>
+	<xs:simpleType name="FlightDelayStatusType">
+		<xs:annotation>
+			<xs:documentation>Provides the delay status for a flight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DELAYED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightPlanRevisionNumberType">
+		<xs:annotation>
+			<xs:documentation>Represents the current revision number of the flight plan.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CountType">
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StarsFlightPlanDeletedIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates if a flight plan and associated data are deleted.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DELETED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StarsFlightPlanStatusType">
+		<xs:annotation>
+			<xs:documentation>Flight Plan Status: Pending, Active, Terminated, Passive.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PENDING"/>
+			<xs:enumeration value="ACTIVE"/>
+			<xs:enumeration value="TERMINATED"/>
+			<xs:enumeration value="PASSIVE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StarsFlightPlanSuspendedIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Flight plan suspended.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUSPENDED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsFlightClassType">
+		<xs:annotation>
+			<xs:documentation>Denotes the flight class of the aircraft which is determined by the aircraft call sign that is in the Aircraft Situation Display to Industry (ASDI) feed. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIR_TAXI">
+				<xs:annotation>
+					<xs:documentation>taxi flights</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIFEGUARD"/>
+			<xs:enumeration value="GA">
+				<xs:annotation>
+					<xs:documentation>General Aviation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CANADIAN_GA"/>
+			<xs:enumeration value="MILITARY">
+				<xs:annotation>
+					<xs:documentation>Military flight</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsUserCategoryType">
+		<xs:annotation>
+			<xs:documentation>Indicates the category of user operating the flight</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIR_TAXI"/>
+			<xs:enumeration value="CARGO"/>
+			<xs:enumeration value="COMMERCIAL"/>
+			<xs:enumeration value="GENERAL_AVIATION"/>
+			<xs:enumeration value="MILITARY"/>
+			<xs:enumeration value="OTHER"/>
+			<xs:enumeration value="UNKNOWN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FlightDelayType">
+		<xs:annotation>
+			<xs:documentation>Container that holds flight delay information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="delayReason" type="nas:FlightDelayReasonListType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>For a delayed flight, it provides the reason(s) for the delay.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="delayStatus" type="nas:FlightDelayStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Provides the delay status for a flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasCoordinationType">
+		<xs:annotation>
+			<xs:documentation>            NAS extension to boundary crossing information: includes special handling for ccoordination time type.     
+Coordination Time and Coordination Fix are handled by crossingPoint and crossingTime.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="coordinationFix" type="fb:SignificantPointChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The fix to be used in conjunction with the Coordination Time so processing for this flight (and its trajectory) can be synchronized for the next sector/facility.  It   coordinates   the flight plan with the aircraft position.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="coordinationTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time to be used in conjunction with the Coordination Fix so processing for this flight (and its trajectory) can be synchronized for the next sector/facility.  It   coordinates   the flight plan with the aircraft position.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="coordinationTimeHandling" type="nas:CoordinationTimeTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Container for Coordination Time Type.
+ The indicator for the type of   Coordination Time  .</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="delayTimeToAbsorb" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the amount of time that needs to be absorbed during the flight. It is corrective action for meeting the goal of Estimated Departure Clearance Time (EDCT), when flight is already active and needs to arrive at the destination later than originally planned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasDiversionType">
+		<xs:annotation>
+			<xs:documentation>Diversion information for the flight.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cancellationLinkage" type="nas:NasDiversionCancellationLinkageType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains information linking canceled flights to new flights.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="diversionRecoveryIndicator" type="nas:DiversionRecoveryIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates whether a flight is in diversion recovery.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="state" type="nas:DiversionStateType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicator used to define the diversion state of a flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasDiversionCancellationLinkageType">
+		<xs:annotation>
+			<xs:documentation>Contains information linking diversion flights to new flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cancelledTfmsFlightReference" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The TFMS reference number of the canceled flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="newTfmsFlightReference" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The TFMS reference number of the new flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasFlightType">
+		<xs:annotation>
+			<xs:documentation>Extends core Flight object with NAS extra data
+         </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:FlightExtensionType">
+				<xs:sequence>
+					<xs:element name="additionalFlightInformation" type="nas:NameValueListType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Additional information about a flight expressed in key-value pairs.
+This element consists of an identification tag/indicator and the relevant value. This information is   extra   information about the flight that does not fall into some other predefined category. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="coordination" type="nas:NasCoordinationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>            NAS extension to boundary crossing information: includes special handling for ccoordination time type.     </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="diversion" type="nas:NasDiversionType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Diversion information for the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="flightDelay" type="nas:FlightDelayType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains information about flight delay and reason</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="flightPlan" type="nas:NasFlightPlanType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains information about the flight plan.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="flightStatus" type="nas:NasFlightStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Identifies the aspect of the flight life cycle. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nasTmi" type="nas:NasTmiType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>NAS Traffic Management Initiative Information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfdmFlightCreationTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The date and time at which a flight was originally created in the TFDM system.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsFlightClass" type="nas:TfmsFlightClassType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Denotes the flight class of the aircraft which is determined by the aircraft call sign that is in the Aircraft Situation Display to Industry (ASDI) feed. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsFlightCreationTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates how long TFMS-Core has known of the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="userCategory" type="nas:TfmsUserCategoryType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the category of user operating the flight</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NasFlightCancellationLinkageType">
+		<xs:annotation>
+			<xs:documentation>Contains identification data linking a canceled flight to a new flight.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="newAircraftIdentification" type="fb:AircraftIdentificationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Aircraft identification of the new flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="newTfmsFlightReference" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The TFMS reference number of the new flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasFlightIdentificationType">
+		<xs:annotation>
+			<xs:documentation>Extends aircraft identity to NAS-specific identifiers.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:FlightIdentificationExtensionType">
+				<xs:sequence>
+					<xs:element name="cancellationLinkage" type="nas:NasFlightCancellationLinkageType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains information linking canceled flights to new flights.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="computerId" type="nas:ComputerIdentificationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>A unique identifier assigned by a particular system within a particular facility.  Typically ERAM within an ARTCC.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="computerIdFacility" type="fb:AtcUnitReferenceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The facility that assigned the computer identifier.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="computerIdPrevious" type="nas:ComputerIdentificationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Specifies the previous computer identification value when a change is made.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="computerIdSystem" type="nas:ComputerIdSystemType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The system that assigned the computer identifier.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="eramGufi" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>ERAM's global unique flight identifier.  Note that a flight with more than one filed flight plan will have one ERAM GUFI per flight plan (not one per flight).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="siteSpecificPlanId" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Site Specific Plan Identifier is a unique ID for each system plan in each ERAM facility.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="siteSpecificPlanIdPrevious" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Specifies the previous site specific plan identifier value when a change is made.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfdmId" type="fb:UniversallyUniqueIdentifierType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>TFDM Unique Identifier with the format 8-4-4-4-12 hex digits generated in accordance with RFC 4122.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfdmIdCreatorAirport" type="fb:LocationIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>TFDM Id Creator Airport with an ICAO Aerodrome format.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsDatabaseKey" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Oracle key of the flight in TFMS database.  </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsFlightReference" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>TFMS Unique Identifier.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfmsFlightReferencePrevious" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Specifies the previous TFMS Unique Identifier value when a change is made.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NasFlightPlanType">
+		<xs:annotation>
+			<xs:documentation>Container for flight plan information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="flightPlanRemarks" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> NAS Flight Plan Field 11 remarks processed by the Traffic Flow Management System (TFMS) and used for TFM purposes. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flightPlanRevisionNumber" type="nas:FlightPlanRevisionNumberType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>NAS Flight Plan Revision Number.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="starsFlightPlanDeletedIndicator" type="nas:StarsFlightPlanDeletedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates if a flight plan and associated data are deleted.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="starsFlightPlanStatus" type="nas:StarsFlightPlanStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Flight Plan Status: Pending, Active, Terminated, Passive.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="starsFlightPlanSuspendedIndicator" type="nas:StarsFlightPlanSuspendedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Flight plan suspended.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tfdmIdOfFlightPlanUsedForSurfaceManagement" type="fb:UniversallyUniqueIdentifierType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Presence of this element indicates that TFDM Surface Management does not consider this flight plan as the primary plan for the flight.  TFDM Surface Management considers this flight plan to be a duplicate of another flight plan, where the other flight plan is considered the primary plan for the flight.  This field provides the tfdmId of the flight plan that is primary.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

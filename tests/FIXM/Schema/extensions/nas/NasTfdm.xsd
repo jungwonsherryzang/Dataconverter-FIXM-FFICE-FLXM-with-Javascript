@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" xmlns:fb="http://www.fixm.aero/base/4.2" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Contains elements specific to Terminal Flight Data Manager (TFDM) not used by other systems.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:simpleType name="MeteringTimeComplianceType">
+		<xs:annotation>
+			<xs:documentation>Measures compliance with Target Movement Area Entry Time.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="COMPLIANT"/>
+			<xs:enumeration value="NOT_COMPLIANT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AccuracyOfPredictedTimesType">
+		<xs:annotation>
+			<xs:documentation>Contains actual vs predicted flight times metrics for departure flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="lookaheadTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The duration of the lookahead time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="queueWaitingTimeAccuracy" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The queue waiting time accuracy for the flight computed as the difference between the actual queue waiting time and the predicted queue waiting time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="spotToQueueTaxiTimePredictionAccuracy" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The duration that is the difference between the flight's actual taxi time and the predicted taxi time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="takeoffTimeAccuracy" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The duration that is the difference between the flight's actual takeoff time and the predicted takeoff time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActualVersusPredictedFlightTimesType">
+		<xs:annotation>
+			<xs:documentation> Contains actual versus predicted flight times metrics for departure flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accuracyOfPredictedTimes" type="nas:AccuracyOfPredictedTimesType" minOccurs="0" maxOccurs="20" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains accuracy of predicted times metrics for departure flights. The set of accuracy measurements is repeated for each different Lookahead Time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrivalTaxiOperationsMetricsType">
+		<xs:annotation>
+			<xs:documentation>Provides phase of taxi operations metrics for arrival flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="inboundMovementAreaHoldTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration spent holding in the movement area by an arriving flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inboundMovementAreaTaxiTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration for taxi in the movement area by an arriving flight</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inboundRampTaxiTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration for  taxi in the ramp area by an arriving flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepartureTaxiOperationsMetricsType">
+		<xs:annotation>
+			<xs:documentation>Contains phase of taxi operations metrics for departure flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="outboundMovementAreaHoldTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration spent for holding incurred in the movement area by a departing flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="outboundMovementAreaQueuingTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration spent in the movement area departure queue by a departing flight</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="outboundMovementAreaTaxiTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration for taxi in the movement area by a departing flight</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="outboundRampTaxiTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration for taxi in the ramp area by a departing flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="standMeteringHoldTimeDuration" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time duration for metering hold incurred at the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MeteringTimeChangeType">
+		<xs:annotation>
+			<xs:documentation>Contains metering time change metrics for departure flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timestamp" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The actual time new TMAT is assigned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatChangeReason" type="fb:TextNameType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The reason for the change of the Target Movement Area Entry Time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatDifference" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The duration that is the difference between the new TMAT and the old TMAT.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatNew" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time of the new TMAT.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatPrior" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time of the previous TMAT.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StabilityOfMeteringTimesType">
+		<xs:annotation>
+			<xs:documentation>Contains stability of metering times metrics for departure flights.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="meteringTimeChange" type="nas:MeteringTimeChangeType" minOccurs="0" maxOccurs="20" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains metering time change metrics for departure flights.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatChangesTotalTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The duration that is the total amount of time for the TMAT changes for the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmatNumberOfChanges" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The count of times the TMAT changed for the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TfdmArrivalType">
+		<xs:annotation>
+			<xs:documentation>Contains TFDM-specific flight arrival information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:ArrivalExtensionType">
+				<xs:sequence>
+					<xs:element name="taxiOperationsMetrics" type="nas:ArrivalTaxiOperationsMetricsType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Provides phase of taxi operations metrics for arrival flights.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TfdmDepartureType">
+		<xs:annotation>
+			<xs:documentation>Contains TFDM-specific flight departure information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:DepartureExtensionType">
+				<xs:sequence>
+					<xs:element name="actualVersusPredictedFlightTimes" type="nas:ActualVersusPredictedFlightTimesType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains actual vs predicted flight times metrics for departure flights.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="flightInitializationLeadTimePoints" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>System assigned number of points for providing the flight initialization lead time</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="meteringHoldLength" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The total amount of metering hold assigned to the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="meteringReadyTimeCompliance" type="nas:MeteringTimeComplianceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the flight arrived at the metering control point in compliance with the Target Movement Area Time issued.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="meteringTimeCompliance" type="nas:MeteringTimeComplianceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the flight was cleared to cross into the Movement Area in compliance with the Target Movement Area Entry Time issued.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="offBlockTimeAccuracyPoints" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>System assigned points for the provision of accurate EOBT</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stabilityOfMeteringTimes" type="nas:StabilityOfMeteringTimesType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains stability of metering times metrics for departure flights.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="taxiOperationsMetrics" type="nas:DepartureTaxiOperationsMetricsType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains phase of taxi operations metrics for departure flights.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timelyProvisionOfActualOffBlockTimeCompliancePoints" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>System assigned number of points for the timely provision of Actual Off-Block Time for the flight (whether the user provided the AOBT for a flight within five minutes of its pushback).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TfdmFlightType">
+		<xs:annotation>
+			<xs:documentation>Contains TFDM specific flight information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:FlightExtensionType">
+				<xs:sequence>
+					<xs:element name="dataComprehensivenessPoints" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>System assigned total number of points for providing the Aircraft Registration Mark, the Stand Assignment and/or the Cancellation Intent for the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="dataQualityPoints" type="fb:CountType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>System assigned number of points for data quality.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

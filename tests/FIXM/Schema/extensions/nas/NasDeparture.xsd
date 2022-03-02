@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fixm.aero/ext/nas/4.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fb="http://www.fixm.aero/base/4.2" xmlns:nas="http://www.fixm.aero/ext/nas/4.3" elementFormDefault="qualified" version="4.3.0 Release Candidate">
+	<xs:annotation>
+		<xs:documentation>Package contains NAS specific extension to the FIXM Core Departure package.
+
+=========================================== 
+Copyright (c) 2021 US Federal Aviation Administration (FAA)
+=========================================== 
+All rights reserved. 
+          
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+	- Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer.
+	- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer in the documentation and/or other materials provided with the distribution.
+	- The name of US FAA or the names of its contributors may not be used to endorse or promote products derived from this specification without specific prior written permission.
+          
+DISCLAIMER 
+          
+THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+          
+========================================== 
+Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: 
+http://www.opensource.org/licenses/bsd-license.php 
+          
+The authoritative reference for FIXM is www.FIXM.aero. 
+          
+Details on the US FAA: http://www.faa.gov/</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.fixm.aero/base/4.2" schemaLocation="../../core/base/Base.xsd"/>
+	<xs:include schemaLocation="NasCommon.xsd"/>
+	<xs:include schemaLocation="NasFlightIntent.xsd"/>
+	<xs:include schemaLocation="NasAirspace.xsd"/>
+	<xs:simpleType name="DeicingIntentType">
+		<xs:annotation>
+			<xs:documentation>Indicates the intent for the flight to be deiced.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEICE">
+				<xs:annotation>
+					<xs:documentation>.Deicing Intent: Indicates the intent for the flight to be deiced.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NO_DEICE">
+				<xs:annotation>
+					<xs:documentation>.Deicing Intent: Indicates the intent for the flight to be deiced.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DepartureDelayReasonType">
+		<xs:annotation>
+			<xs:documentation>Represents the reason for flight departure delay.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="WEATHER"/>
+			<xs:enumeration value="EQUIPMENT"/>
+			<xs:enumeration value="RUNWAY_TAXIWAY"/>
+			<xs:enumeration value="OTHER"/>
+			<xs:enumeration value="VOLUME"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DepartureReadinessIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates that the flight is ready for departure.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEPARTURE_READY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DepartureSequenceNumberType">
+		<xs:annotation>
+			<xs:documentation>Represents a non-zero integer sequence number used to represent position in the departure queue.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CountType">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightRemovedFromSmpDemandIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Notification indicating that the flight has been removed from the demand list.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FLIGHT_REMOVED_FROM_DEMAND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightSuspensionWarningIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Notification indicating that the flight has been suspended in the system.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FLIGHT_SUSPENSION_WARNING"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MeteringTimeReclamationIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Notification indicating that the metering time has been reclaimed.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="METERING_TIME_RECLAMATION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MeteringTimeReclamationWarningIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Warning that indicates the metering time is about to be reclaimed.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="METERING_TIME_RECLAMATION_WARNING"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MissedTmatIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Notification indicating that the flight missed the Target Movement Area Entry Time.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MISSED_TMAT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MissedTobtIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Notification indicating that the flight missed the Target Off Block Time.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MISSED_TOBT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RestrictedRunwayDirectionDesignatorListType">
+		<xs:annotation>
+			<xs:documentation>Helper simpleType that allows representation of runway designators as a list.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="fb:RestrictedRunwayDirectionDesignatorType"/>
+	</xs:simpleType>
+	<xs:simpleType name="SmpExemptionIndicatorType">
+		<xs:annotation>
+			<xs:documentation>The exemption status from a Surface Metering Procedure.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EXEMPT"/>
+			<xs:enumeration value="NOT_EXEMPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SmpExemptionReasonType">
+		<xs:annotation>
+			<xs:documentation>The reason for the exemption from the Surface Metering Program.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="APREQ_WITHOUT_CFR_GLOBAL"/>
+			<xs:enumeration value="APREQ_WITHOUT_CFR_SMP"/>
+			<xs:enumeration value="APREQ_WITHOUT_CFR_TMI"/>
+			<xs:enumeration value="CFR"/>
+			<xs:enumeration value="DEICE"/>
+			<xs:enumeration value="DIVERSION_RECOVERY"/>
+			<xs:enumeration value="EDCT"/>
+			<xs:enumeration value="IN_TRAIL_SMP_AFFECTED"/>
+			<xs:enumeration value="LIFEGUARD"/>
+			<xs:enumeration value="METERED_IN_TRAIL"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SmpIdType">
+		<xs:annotation>
+			<xs:documentation>A numeric identifier in the format "YYYYMMDDNNNN" where:
+YYYY is the four digit year of the date that the SMP was created.
+MM is the (zero padded) number of the month of the date that the SMP was created.
+DD is the (zero padded) number of the day of the date that the SMP was created.
+NNNN is the (zero padded) sequential number, starting at 1 for the first SMP of the day.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StandReturnIntentType">
+		<xs:annotation>
+			<xs:documentation>Indicates the intent for the flight to return to the stand.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RETURN">
+				<xs:annotation>
+					<xs:documentation>.Stand Return Intent: Indicates the intent for the flight to return to the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NO_RETURN">
+				<xs:annotation>
+					<xs:documentation>.Stand Return Intent: Indicates the intent for the flight to return to the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfdmDepartureRouteIndicatorType">
+		<xs:annotation>
+			<xs:documentation>An adapted abbreviation that considers the first two route elements (after the departure airport) of the flight plan route of the flight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="fb:CharacterStringType">
+			<xs:pattern value="[A-Z0-9]{1,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TfmsEstimatedDepartureTypeType">
+		<xs:annotation>
+			<xs:documentation>The type for the estimated runway departure time determined by Traffic Flow Management System (TFMS).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SCHEDULED"/>
+			<xs:enumeration value="EARLY_INTENT"/>
+			<xs:enumeration value="PROPOSED"/>
+			<xs:enumeration value="TAXIED"/>
+			<xs:enumeration value="ESTIMATED"/>
+			<xs:enumeration value="METERED"/>
+			<xs:enumeration value="ACTUAL"/>
+			<xs:enumeration value="AIRLINE"/>
+			<xs:enumeration value="REROUTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TmatMarkedForSubsitutionIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates that a TMAT for the flight is marked for subsitution.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TMAT_MARKED_FOR_SUBSTITUTION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TmatRelinquishIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates that a TMAT for the flight needs to be relinquished.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TMAT_RELINQUISH"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TmiTypeType">
+		<xs:annotation>
+			<xs:documentation>The type of TMI such as MIT, MINIT, APREQ.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AFP"/>
+			<xs:enumeration value="AIRPORT"/>
+			<xs:enumeration value="APREQ"/>
+			<xs:enumeration value="CTOP"/>
+			<xs:enumeration value="DSP"/>
+			<xs:enumeration value="GDP"/>
+			<xs:enumeration value="GS"/>
+			<xs:enumeration value="MINIT"/>
+			<xs:enumeration value="MIT"/>
+			<xs:enumeration value="STOP"/>
+			<xs:enumeration value="SWAP"/>
+			<xs:enumeration value="TBM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DeicingInformationType">
+		<xs:annotation>
+			<xs:documentation>Indicates the intent for the flight to be deiced and the intended deicing location.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="deicingIntent" type="nas:DeicingIntentType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the intent for the flight to be deiced.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deicingLocation" type="fb:CharacterStringType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicates the location where the flight intends to be deiced.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepartureDelayType">
+		<xs:annotation>
+			<xs:documentation>Contains information about flight departure delay.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actualDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Delay for flight, calculated after Take Off.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="actualReportableDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Reportable OPSNET delay as defined in FAA Order JO 7210.55F. Only delays exceeding or equal to the adaptable threshold (e.g., 15 min) are reported.  Calculated after Take Off.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="currentDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Running accumulation of Delay, for departure flight until take off time is recorded.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="currentReportableDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Running accumulation of Reportable Delay, for departure flight until take off time is recorded. Only delays exceeding or equal to the adaptable threshold (e.g., 15 min) are reported.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="delayEndTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Departure delay end time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="delayStartTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Departure delay start time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="facilityToCharge" type="fb:AtcUnitReferenceType" minOccurs="0" maxOccurs="10" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The facility the delay is attributed to.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="impactingCondition" type="nas:CharacterString250Type" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The primary reason, secondary reason, and remarks for the delay, separated by colons. 
+
+If the delay is attributable to a TMI, this is the Primary Reason, Secondary Reason, and Remarks associated with the TMI.
+
+Example: WEATHER:FOG:EAST GATE</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="predictedDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The difference between the sum of the flight's Earliest Off-Block Time, Ramp Transit Time, and Unimpeded Taxi Time, and the flight's Estimated Take-Off Time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reason" type="nas:DepartureDelayReasonType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Represents the reason for flight departure delay.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tmiType" type="nas:TmiTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The type of TMI such as MIT, MINIT, APREQ.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MeteringNotificationType">
+		<xs:annotation>
+			<xs:documentation>Metering notifications including MissedTOBT, MissedTMAT, FlightSuspensionWarning, and FlightRemovedFromDemand.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="flightRemovedFromSmpDemand" type="nas:FlightRemovedFromSmpDemandIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Notification indicating that the flight has been removed from the demand list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flightRemovedReason" type="nas:CharacterString60Type" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The reason for the flight removal from the demand list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flightSuspensionWarning" type="nas:FlightSuspensionWarningIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Notification indicating that the flight has been suspended in the system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="meteringTimeReclamation" type="nas:MeteringTimeReclamationIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Notification indicating that the metering time has been reclaimed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="meteringTimeReclamationWarning" type="nas:MeteringTimeReclamationWarningIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Warning that indicates the metering time is about to be reclaimed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="missedTmat" type="nas:MissedTmatIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Notification indicating that the flight missed the Target Movement Area Entry Time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="missedTobt" type="nas:MissedTobtIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Notification indicating that the flight missed the Target Off Block Time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasDepartureType">
+		<xs:annotation>
+			<xs:documentation>Extends core Flight Departure with NAS specific Extensions.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="fb:DepartureExtensionType">
+				<xs:sequence>
+					<xs:element name="acceptableRunway" type="nas:RestrictedRunwayDirectionDesignatorListType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>List of acceptable departure runway names.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="airportMonitoringStatus" type="nas:AirportMonitoringStatusType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the departure airport for the flight is monitored by traffic flow management.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="approvalRequestReleaseTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The approved departure time for a flight subject to departure constraints which require an approval.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="atSpotActualTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time at which the departure aircraft arrives at the spot.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clearanceDeliveryTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time at which a flight received route clearance.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="deicing" type="nas:DeicingInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates the intent for the flight to be deiced and the intended deicing location.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureCenter" type="fb:AtcUnitReferenceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates the Air Route Traffic Control Center (ARTCC) for the departure point for a flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureDelay" type="nas:DepartureDelayType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Contains information about flight departure delay.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureFix" type="nas:NasSignificantPointInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The point at which the responsibility for control of the flight is transferred from the Terminal Air Traffic Control unit to the En Route Air Traffic Control unit (Centre, ARTCC).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureFixTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time the flight is over the departure fix.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departurePoint" type="fb:SignificantPointChoiceType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Represents non-aerodrome departure points.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departurePointText" type="fb:TextNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Departure point information specified in free text format.  Examples:
+Airport: GCW
+Lat/Lon: 3500N/04000W
+FRD: SHP090015</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureProcedure" type="nas:InstrumentRouteDesignatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>This is the name of a published departure procedure extending from the departure runway to the start of the en route part of the aircraft's route. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureProcedureTransitionFix" type="nas:NasSignificantPointInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The name for the Departure Procedure Transition Fix.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureReadinessIndicator" type="nas:DepartureReadinessIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates that the flight is ready for departure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureSequenceNumber" type="nas:DepartureSequenceNumberType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the position in the departure queue.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureSpotActual" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The location on the surface where the aircraft is about to enter the airport movement area for departure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureSpotIntended" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Indicates the location intended for the flight to enter the airport movement area from the non-movement area.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureSpotPredicted" type="nas:NasSpotInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The predicted location on the surface where the aircraft will enter the airport movement area for departure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureTaxiTime" type="nas:NasDepartureTaxiTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Container for NAS Specific Taxi Departure Times.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="meteringNotification" type="nas:MeteringNotificationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Metering notifications such as MissedTOBT and MissedTMAT.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="movementAreaActualEntryTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time at which a flight actually entered  the Airport Movement Area (AMA).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="movementAreaHoldInformation" type="nas:MovementAreaHoldInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Information about a flight intending to hold or holding in the airport movement area due to unavailability of a parking stand or ramp access, and the times associated with the flight entering and exiting the hold in the airport movement area.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="movementAreaTargetEntryTime" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The time at which a flight is assigned to enter the Airport Movement Area (AMA) when airport surface departure metering procedures are in effect.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nonMovementAreaHoldIntent" type="nas:HoldIntentType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the intent for a flight to hold in the airport non-movement area due to unavailability of a parking stand or ramp access.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="offBlockTime" type="nas:NasOffBlockTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Information about flight gate departure time.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rampArea" type="nas:SurfaceRegionNameType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation> Flight specific ramp area assignment for a departure.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayActualEntryTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The actual time when the flight enters the runway</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayDepartureTime" type="nas:NasRunwayDepartureTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Container for NAS Specific Runway Departure Times.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayInformation" type="nas:NasRunwayInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Information on the predicted, assigned, and/or actual departure runway for the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayQueueActualEntryTime" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The actual time when the flight enters the runway queue.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="runwayUnassignedDesignator" type="nas:RunwayUnassignedIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates that the runway associated with a flight is unassigned.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="smpExemptionIndicator" type="nas:SmpExemptionIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Exemption status from Surface Metering Programs.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="smpExemptionReason" type="nas:SmpExemptionReasonType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The reason for the exemption from the Surface Metering Program.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="smpIdentifier" type="nas:SmpIdentificationKeyType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Provides an identifier for an SMP.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="standInformation" type="nas:NasStandInformationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The name of the departure stand assignment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="standReturnIntent" type="nas:StandReturnIntentType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates the intent for the flight to return to the stand.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stddsSpotOut" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Surface Event as determined by a surface movement service.  This event represents when a flight has exited a ramp area and transitioned into a movement area.  </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stddsWheelsOff" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Surface Event as determined by a surface movement service.  This event represents when a flight has left the ground during take off.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfdmDepartureRouteIndicator" type="nas:TfdmDepartureRouteIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>An adapted abbreviation that considers the first two route elements (after the departure airport) of the flight plan route of the flight.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tfdmDepartureRouteIndicatorLong" type="nas:CharacterString20Type" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The route element(s) of the flight plan route of the flight that were used to determine the Departure Route Indicator.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timeOutDelay" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>The amount of delay for a flight calculated by TFMS due to the fact that the flight has not departed as projected.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tmatMarkedForSubstitution" type="nas:TmatMarkedForSubsitutionIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates that a TMAT for the flight is marked for subsitution.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tmatRelinquishIndicator" type="nas:TmatRelinquishIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Indicates that a TMAT for the flight needs to be relinquished.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="unacceptableRunway" type="nas:RestrictedRunwayDirectionDesignatorListType" minOccurs="0" maxOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>List of unacceptable departure runway names.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NasDepartureTaxiTimeType">
+		<xs:annotation>
+			<xs:documentation>Container for NAS Specific Taxi Departure Times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elapsedDepartureTaxiTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The elapsed taxi time for a departure aircraft. Starts when the flight enters the airport movement area and continues from there.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedDepartureQueueWaitingTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated length of time for the flight in a departure queue.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedDepartureRampTransitTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated taxi time from the stand to the entry point in the airport movement area.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedSpotToQueueTaxiOutTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated taxi time from the entry point in the airport movement area to the departure queue entry.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalEstimatedTaxiOutTime" type="fb:DurationType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The total estimated taxi out time from the stand to take-off.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasOffBlockTimeType">
+		<xs:annotation>
+			<xs:documentation>Contains information about flight gate departure time.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actual" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The actual off-block time for a flight reported by a source.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="earliest" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The earliest time an aircraft can push back or taxi from the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimated" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated off-block time for a flight, as provided from the NAS flight plan
+The estimated time at which a flight will depart from the stand as provided by the airspace user.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initial" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The date and time at which a flight was originally planning to depart the stand.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scheduled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> Scheduled gate time of departure for a flight, as provided by the OAG (Official Airline Guide).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="target" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The departure stand time agreed upon between the flight operator and other interested parties (such as between the Flight Operator and Air/Ground Services Providers, Airport Authority).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayDepartureEstimatedType">
+		<xs:annotation>
+			<xs:documentation>The estimated time of runway departure as provided by a specified source.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="estimatedType" type="nas:TfmsEstimatedDepartureTypeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The type for the estimated runway departure time determined by Traffic Flow Management System (TFMS).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reportedTime" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The reported estimated runway departure time.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NasRunwayDepartureTimeType">
+		<xs:annotation>
+			<xs:documentation>Container for NAS Specific Runway Departure Times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="actual" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Contains information about actual runway time.
+The actual runway departure time, as determined by a reported source.
+
+These fields in the U.S. extension  are used in order to allow providing provenances source data.  Actual time that does not include provenance source data should be recorded in Core.Departure.actualTimeOfDeparture.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="base" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The last Runway Departure Time - Traffic Flow Management System Estimated modeled by TFMS before either a Traffic Management Initiative (TMI) is issued, or the flight departs and includes any time-out delay modeled by TFMS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="controlled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The time at which a flight is required to take off from the runway as a result of a tactical slot allocation or a Traffic Management Initiative.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="earliest" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The earliest time a flight can takeoff (wheels-off) based on its "earliest off block time" and other factors, as determined by the reporting source.  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimated" type="nas:NasRunwayDepartureEstimatedType" minOccurs="0" maxOccurs="2000" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The estimated time of runway departure as provided by a specified source.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="original" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The last Runway Departure Time - Traffic Flow Management System Estimated modeled by TFMS before either a Traffic Management Initiative (TMI) is issued, or the flight departs, or the flight is  time-out  delayed by TFMS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="originalControlled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The first controlled departure time (CTD/EDCT) issued for a flight for the control element which currently controls the flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preferred" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>A runway departure time which, when considered in aggregate with other flights for that Airspace User, indicates the preferred departure sequence.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="target" type="nas:ReportedTimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Target Take Off Time (TTOT)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tbfmControlled" type="fb:TimeType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation> The time at which a flight is required to take off from the runway as scheduled by Time Based Flow Management.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SmpIdentificationKeyType">
+		<xs:annotation>
+			<xs:documentation>Provides a numeric identifier for an SMP and an aerodrome name.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="aerodrome" type="fb:LocationIndicatorType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Aerodrome identifier.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identifier" type="nas:SmpIdType" minOccurs="0" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>The SMP ID.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
