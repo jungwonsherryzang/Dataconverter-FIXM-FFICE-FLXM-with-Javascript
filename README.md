@@ -1,4 +1,4 @@
-# Dataconverter-FIXM-FFICE-with-typescript/javascript
+# Dataconverter FIXM-FFICE with Typescript/Javascript
 Developing a data converter that converts XML to JSON and vice versa for an air traffic management dealing with flight data
 
 FIXM that stands for Flight Information eXchange Model is a data format for aviation flight information.
