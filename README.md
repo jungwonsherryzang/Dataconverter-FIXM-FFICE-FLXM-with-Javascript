@@ -54,6 +54,11 @@ Details on the US FAA: http://www.faa.gov/ </xs:documentation>
 	<xs:import namespace="http://www.fixm.aero/flight/4.2" schemaLocation="./flight/Flight.xsd"/>
 </xs:schema>
 ```
+## INSTALLATION
+Use npm to install xml4js package:
+```
+npm install xml4js
+```
 
 ### USAGE
 ``` javascript
