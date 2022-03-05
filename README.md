@@ -97,7 +97,7 @@ parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, impo
 ```
 
 ### READ AND WRITE FILE
-```
+``` javascript
 //Using readFileSync to read file
 var xsd = fs.readFileSync('./tests/xsd/FIXM/Schema/applications/fficemessage/fficetemplates/flightdatarequest/FlightDataRequest.xsd', {encoding: 'utf-8'});
 var xml = fs.readFileSync('./tests/xml/FIXM/PROPOSAL_RESP.xml', {encoding: 'utf-8'});
@@ -107,7 +107,7 @@ fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
 ```
 
 #### OUTCOME
-``` 
+``` json
 Ffice2Message: {
     xmlns: [ 'http://www.fixm.aero/app/ffice2/1.0' ],
     'xmlns:ns2': [ 'http://www.fixm.aero/flight/4.2' ],
