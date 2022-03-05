@@ -27,7 +27,6 @@ parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, impo
     console.log(util.inspect(result, false, null)); 
 
     //save JSON in a file
-    //TODO: saving as JSON file hasn't worked so far
-    //fs.writeFileSync('./tests/outcome_fixm/PLAN_STATUS.json', json);
+    fs.writeFileSync('./tests/output_fixm/PLAN_STATUS.json', json);
     });
 });
