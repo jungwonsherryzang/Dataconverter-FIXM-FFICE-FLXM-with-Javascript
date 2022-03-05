@@ -107,7 +107,7 @@ fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
 ```
 
 #### OUTCOME
-``` json
+``` 
 Ffice2Message: {
     xmlns: [ 'http://www.fixm.aero/app/ffice2/1.0' ],
     'xmlns:ns2': [ 'http://www.fixm.aero/flight/4.2' ],
