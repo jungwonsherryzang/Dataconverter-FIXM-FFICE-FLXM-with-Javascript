@@ -64,27 +64,86 @@ npm install xml4js
 ``` javascript
 var fs = require('fs');
 var util = require('util');
-var xml4js = require('xml4js');
+var xml4js = require('./xml4js');
+var xml2js = require('xml2js');
+
 
 // Most of xml2js options should still work
 var options = {};
 var parser = new xml4js.Parser(options);
 
 
-// Default is to not download schemas automatically, so we should add it manually
-var xsd = fs.readFileSync('./tests/other/test1.xsd', {encoding: 'utf-8'});
-var xml = fs.readFileSync('./tests/other/test1.xml', {encoding: 'utf-8'});
+// Default is not to download schemas automatically, so we should add it manually
+var xsd = fs.readFileSync('./tests/xsd/FIXM/Schema/applications/fficemessage/fficetemplates/flightdatarequest/FlightDataRequest.xsd', {encoding: 'utf-8'});
+var xml = fs.readFileSync('./tests/xml/FIXM/PROPOSAL_RESP.xml', {encoding: 'utf-8'});
 
 
-parser.addSchema('http://www.example.com/PO', xsd, function (err, importsAndIncludes) {
-    // importsAndIncludes contains schemas to be added as well to satisfy all imports and includes found in schema.xsd
+parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, importsAndIncludes) { 
+    // importsAndIncludes contains schemas to be added as well to satisfy all imports and includes found in xsd file
+    //convert XML to JSON
+    xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
+        if (err) {
+            throw err;
+    };
 
-    parser.parseString(xml, function (err, result) {
-        console.log(util.inspect(result, false, null));
+    //convert it to a JSON string
+    const json = JSON.stringify(result, null, 4);
+    console.log(util.inspect(result, false, null)); 
+
+    //save JSON in a file
+    fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
     });
 });
 ```
 
-#### TEST FILE
+### READ AND WRITE FILE
+```
+//Using readFileSync to read file
+var xsd = fs.readFileSync('./tests/xsd/FIXM/Schema/applications/fficemessage/fficetemplates/flightdatarequest/FlightDataRequest.xsd', {encoding: 'utf-8'});
+var xml = fs.readFileSync('./tests/xml/FIXM/PROPOSAL_RESP.xml', {encoding: 'utf-8'});
+
+//Using writeFileSync to save converted file as JSON file
+fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
+```
+
+#### OUTCOME
+``` 
+Ffice2Message: {
+    xmlns: [ 'http://www.fixm.aero/app/ffice2/1.0' ],
+    'xmlns:ns2': [ 'http://www.fixm.aero/flight/4.2' ],
+    'xmlns:ns3': [ 'http://www.fixm.aero/base/4.2' ],
+    flight: [
+      {
+        'ns2:arrival': [
+          {
+            'ns2:destinationAerodrome': [ { 'ns3:locationIndicator': [ 'RJAA' ] } ]
+          }
+        ],
+        'ns2:departure': [
+          {
+            'ns2:aerodrome': [ { 'ns3:locationIndicator': [ 'KIAH' ] } ],
+            'ns2:estimatedOffBlockTime': [ '2021-08-02T20:17:18.224Z' ],
+            'ns2:runwayDirection': [ '13R' ]
+          }
+        ],
+        'ns2:flightIdentification': [ { 'ns2:aircraftIdentification': [ 'DLH796' ] } ],
+        'ns2:gufi': [
+          {
+            _: '7c5cde3d-fa4e-4470-acc3-a0ccedff9cf4',
+            codeSpace: [ 'urn:uuid' ]
+          }
+        ],
+        'ns2:gufiOriginator': [
+          {
+            'ns3:contact': [
+              { 'ns3:name': [ 'NAME' ], 'ns3:title': [ 'DISPATCHER' ] }
+            ],
+            'ns3:identifier': [ 'IDENTIFIER' ],
+            'ns3:identifierDomain': [ 'FF-ICE' ],
+            'ns3:name': [ 'FAA' ]
+          }
+        ],
+```
+
 
 
