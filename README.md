@@ -77,21 +77,19 @@ var parser = new xml4js.Parser(options);
 var xsd = fs.readFileSync('./tests/xsd/FIXM/Schema/applications/fficemessage/fficetemplates/flightdatarequest/FlightDataRequest.xsd', {encoding: 'utf-8'});
 var xml = fs.readFileSync('./tests/xml/FIXM/PROPOSAL_RESP.xml', {encoding: 'utf-8'});
 
+var parseString = require('xml2js').parseString;
 
 parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, importsAndIncludes) { 
     // importsAndIncludes contains schemas to be added as well to satisfy all imports and includes found in xsd file
-    //convert XML to JSON
-    xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
-        if (err) {
-            throw err;
-    };
+    
+    //convert xml to json
+    parseString(xml, function (err, result) {
+        //var json = JSON.stringify(result, null, 4);
+        console.log(util.inspect(result, false, null));
+        console.dir(result.Ffice2Message);
+        var json = JSON.stringify(result, null, 2);
 
-    //convert it to a JSON string
-    const json = JSON.stringify(result, null, 4);
-    console.log(util.inspect(result, false, null)); 
-
-    //save JSON in a file
-    fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
+        fs.writeFileSync('./tests/output_fixm/AGREED_TRAJECTORY.json', json);
     });
 });
 ```
