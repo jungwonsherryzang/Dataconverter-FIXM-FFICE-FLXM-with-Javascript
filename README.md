@@ -105,42 +105,67 @@ fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
 ```
 
 #### OUTCOME
-``` 
-Ffice2Message: {
-    xmlns: [ 'http://www.fixm.aero/app/ffice2/1.0' ],
-    'xmlns:ns2': [ 'http://www.fixm.aero/flight/4.2' ],
-    'xmlns:ns3': [ 'http://www.fixm.aero/base/4.2' ],
-    flight: [
-      {
-        'ns2:arrival': [
+E_FPL.json
+``` json
+"ns3:routeTrajectoryGroup": [
           {
-            'ns2:destinationAerodrome': [ { 'ns3:locationIndicator': [ 'RJAA' ] } ]
-          }
-        ],
-        'ns2:departure': [
-          {
-            'ns2:aerodrome': [ { 'ns3:locationIndicator': [ 'KIAH' ] } ],
-            'ns2:estimatedOffBlockTime': [ '2021-08-02T20:17:18.224Z' ],
-            'ns2:runwayDirection': [ '13R' ]
-          }
-        ],
-        'ns2:flightIdentification': [ { 'ns2:aircraftIdentification': [ 'DLH796' ] } ],
-        'ns2:gufi': [
-          {
-            _: '7c5cde3d-fa4e-4470-acc3-a0ccedff9cf4',
-            codeSpace: [ 'urn:uuid' ]
-          }
-        ],
-        'ns2:gufiOriginator': [
-          {
-            'ns3:contact': [
-              { 'ns3:name': [ 'NAME' ], 'ns3:title': [ 'DISPATCHER' ] }
-            ],
-            'ns3:identifier': [ 'IDENTIFIER' ],
-            'ns3:identifierDomain': [ 'FF-ICE' ],
-            'ns3:name': [ 'FAA' ]
-          }
-        ],
+            "ns3:filed": [
+              {
+                "ns3:element": [
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "0.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:aerodromeReferencePoint": [
+                          {
+                            "ns2:locationIndicator": [
+                              "KIAH"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "0.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "KIAH"
+                            ],
+                            "ns3:propertyType": [
+                              "INITIAL_PREDICTION_POINT"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "29.985 -95.3416666666667"
+                            ]
+                          }
+                        ],
 ```
 
 
