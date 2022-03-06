@@ -106,6 +106,11 @@ fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
 
 #### OUTCOME
 E_FPL.json
+
+Packeage builds upon node-xml2js, detects and parses XML Schema that is used to transform Javascript Object into a consistent schema-driven structure.
+It maps attributes to $ field and values to _ field.
+from. https://github.com/peerlibrary/node-xml4js
+
 ``` json
 "ns3:routeTrajectoryGroup": [
           {
