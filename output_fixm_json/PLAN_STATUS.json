@@ -1,0 +1,2654 @@
+{
+  "FficeMessage": {
+    "$": {
+      "xsi:type": "FficePS_FficeMessageType",
+      "xmlns": "http://www.fixm.aero/app/ffice/1.0",
+      "xmlns:ns2": "http://www.fixm.aero/base/4.2",
+      "xmlns:ns3": "http://www.fixm.aero/flight/4.2",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+    },
+    "flight": [
+      {
+        "ns3:gufi": [
+          {
+            "_": "64d6ec6e-c980-43a9-a148-c42a637cd435",
+            "$": {
+              "codeSpace": "urn:uuid"
+            }
+          }
+        ],
+        "ns3:gufiOriginator": [
+          {
+            "ns2:contact": [
+              {
+                "ns2:name": [
+                  "NAME"
+                ],
+                "ns2:title": [
+                  "DISPATCHER"
+                ]
+              }
+            ],
+            "ns2:identifier": [
+              "IDENTIFIER"
+            ],
+            "ns2:identifierDomain": [
+              "FF-ICE"
+            ],
+            "ns2:name": [
+              "FAA"
+            ]
+          }
+        ],
+        "ns3:routeTrajectoryGroup": [
+          {
+            "ns3:negotiating": [
+              {
+                "ns3:element": [
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "0.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:aerodromeReferencePoint": [
+                          {
+                            "ns2:locationIndicator": [
+                              "KIAH"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "0.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "KIAH"
+                            ],
+                            "ns3:propertyType": [
+                              "INITIAL_PREDICTION_POINT"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "29.985 -95.3416666666667"
+                            ]
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:absoluteTime": [
+                              "2021-08-03T15:14:12.274Z"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "143.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "DOLEY"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "28000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-35.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "242.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "55.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "DOLEY"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "32.19 -96.385"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "484.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT22M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "201.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:navaid": [
+                          {
+                            "ns2:designator": [
+                              "FUZ"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "28000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-36.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "237.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "52.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "FUZ"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "32.89 -97.18"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "467.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT30M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:routeDesignator": [
+                          "J58"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "250.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "BATIK"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "28000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-36.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "238.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "60.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "BATIK"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "33.4483333333333 -97.8933333333333"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "461.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT36M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:routeDesignator": [
+                          "J58"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "298.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:navaid": [
+                          {
+                            "ns2:designator": [
+                              "SPS"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "28000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-36.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "235.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "66.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "SPS"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "33.9866666666667 -98.5933333333333"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "462.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT43M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "530.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:navaid": [
+                          {
+                            "ns2:designator": [
+                              "DHT"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "28000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-37.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "242.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "89.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "DHT"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "36.0916666666667 -102.545"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "429.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT1H15M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "756.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "HELPS"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-44.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "237.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "91.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "HELPS"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "37.6083333333333 -106.831666666667"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "416.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT1H47M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "946.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:navaid": [
+                          {
+                            "ns2:designator": [
+                              "HVE"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-44.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "321.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "28.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "HVE"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "38.4166666666667 -110.7"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "448.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT2H12M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1117.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "NILLS"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-47.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "16.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "77.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "NILLS"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "38.55 -114.333333333333"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "479.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT2H34M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1336.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "YERIN"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-46.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "21.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "54.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "YERIN"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "38.98 -118.961666666667"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "479.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT3H1M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1515.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "HUPTU"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-45.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "32.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "31.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "HUPTU"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "39.5 -122.745"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "481.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT3H24M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1691.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "REDWD"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-45.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "18.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "36.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "REDWD"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "40.0 -126.5"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "474.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT3H46M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1716.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "TRYSH"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-45.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "13.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "36.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "TRYSH"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "40.1516666666667 -127.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "463.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT3H49M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "1898.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "GAPNE"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "30000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-44.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "22.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "33.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "GAPNE"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "41.2 -130.75"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "471.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT4H12M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "2341.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "44.0 -140.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "32000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-48.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "303.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "18.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "44N40"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "44.0 -140.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "450.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT5H11M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "2783.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "46.0 -150.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "32000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-48.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "220.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "77.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "46N50"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "46.0 -150.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "430.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT6H12M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "3211.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "48.0 -160.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "32000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-52.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "345.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "19.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "48N60"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "48.0 -160.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "453.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT7H9M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "3624.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "50.0 -170.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "32000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-52.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "337.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "98.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "50N70"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "50.0 -170.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "394.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT8H12M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "4019.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "49.0 180.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "34000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-53.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "295.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "82.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "49E80"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "49.0 180.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "393.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT9H11M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "4439.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "47.0 170.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "34000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-53.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "238.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "61.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "47E70"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "47.0 170.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "402.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT10H14M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "4962.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "42.0 160.0"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "34000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-50.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "195.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "133.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "42E60"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "42.0 160.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "355.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT11H42M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "5478.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "EMRON"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "34000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-48.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "283.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "49.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "EMRON"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "38.1066666666667 150.0"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "428.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT12H54M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:routeDesignator": [
+                          "OTR7"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "5692.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:designatedPoint": [
+                          {
+                            "ns2:designator": [
+                              "ADNAP"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "36000.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "-58.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "299.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "94.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "ADNAP"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "37.1966666666667 145.666666666667"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "384.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT13H28M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "DIRECT"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ns3:alongRouteDistance": [
+                      {
+                        "_": "5961.0",
+                        "$": {
+                          "uom": "NM"
+                        }
+                      }
+                    ],
+                    "ns3:elementStartPoint": [
+                      {
+                        "ns2:aerodromeReferencePoint": [
+                          {
+                            "ns2:locationIndicator": [
+                              "RJAA"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:point4D": [
+                      {
+                        "ns3:level": [
+                          {
+                            "ns2:altitude": [
+                              {
+                                "_": "100.0",
+                                "$": {
+                                  "uom": "FT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:metData": [
+                          {
+                            "ns3:temperature": [
+                              {
+                                "_": "7.0",
+                                "$": {
+                                  "uom": "C"
+                                }
+                              }
+                            ],
+                            "ns3:windDirection": [
+                              {
+                                "_": "351.0",
+                                "$": {
+                                  "uom": "DEG"
+                                }
+                              }
+                            ],
+                            "ns3:windSpeed": [
+                              {
+                                "_": "6.0",
+                                "$": {
+                                  "uom": "KT"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "ns3:pointProperty": [
+                          {
+                            "ns3:description": [
+                              "RJAA"
+                            ],
+                            "ns3:propertyType": [
+                              "END_PREDICTION_POINT"
+                            ]
+                          }
+                        ],
+                        "ns3:position": [
+                          {
+                            "$": {
+                              "srsName": "urn:ogc:def:crs:EPSG::4326"
+                            },
+                            "ns2:pos": [
+                              "35.765 140.385"
+                            ]
+                          }
+                        ],
+                        "ns3:predictedGroundspeed": [
+                          {
+                            "_": "256.0",
+                            "$": {
+                              "uom": "KT"
+                            }
+                          }
+                        ],
+                        "ns3:time": [
+                          {
+                            "ns3:relativeTimeFromInitialPredictionPoint": [
+                              "PT14H16M"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:routeDesignatorToNextElement": [
+                      {
+                        "ns3:otherRouteDesignator": [
+                          "LAST_POINT"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "ns3:routeInformation": [
+                  {
+                    "ns3:cruisingLevel": [
+                      {
+                        "ns2:flightLevel": [
+                          {
+                            "_": "280.0",
+                            "$": {
+                              "uom": "FL"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "ns3:cruisingSpeed": [
+                      {
+                        "_": "480.0",
+                        "$": {
+                          "uom": "KT"
+                        }
+                      }
+                    ],
+                    "ns3:flightRulesCategory": [
+                      "I"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "operatorFlightPlanVersion": [
+      "1"
+    ],
+    "originator": [
+      {
+        "ns2:contact": [
+          {
+            "ns2:name": [
+              "NAME"
+            ],
+            "ns2:title": [
+              "DISPATCHER"
+            ]
+          }
+        ],
+        "ns2:identifier": [
+          "IDENTIFIER"
+        ],
+        "ns2:identifierDomain": [
+          "FF-ICE"
+        ],
+        "ns2:name": [
+          "FAA"
+        ]
+      }
+    ],
+    "planningStatus": [
+      {
+        "value": [
+          "CONCUR"
+        ]
+      }
+    ],
+    "recipient": [
+      {
+        "ns2:contact": [
+          {
+            "ns2:name": [
+              "NAME"
+            ],
+            "ns2:title": [
+              "DISPATCHER"
+            ]
+          }
+        ],
+        "ns2:identifier": [
+          "IDENTIFIER"
+        ],
+        "ns2:identifierDomain": [
+          "FF-ICE"
+        ],
+        "ns2:name": [
+          "FAA"
+        ]
+      },
+      {
+        "ns2:contact": [
+          {
+            "ns2:name": [
+              "NAME"
+            ],
+            "ns2:title": [
+              "DISPATCHER"
+            ]
+          }
+        ],
+        "ns2:identifier": [
+          "IDENTIFIER"
+        ],
+        "ns2:identifierDomain": [
+          "FF-ICE"
+        ],
+        "ns2:name": [
+          "JCAB"
+        ]
+      }
+    ],
+    "timestamp": [
+      "2021-08-03T15:14:12.274Z"
+    ],
+    "type": [
+      "PLANNING_STATUS"
+    ],
+    "uniqueMessageIdentifier": [
+      {
+        "_": "711666e5-00d8-4e6b-a1fb-d53d50de043e",
+        "$": {
+          "codeSpace": "urn:uuid"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "FficeMessage": {
+    "$": {
+      "xsi:type": "FficeFD_FficeMessageType",
+      "xmlns": "http://www.fixm.aero/app/ffice/1.0",
+      "xmlns:ns2": "http://www.fixm.aero/flight/4.2",
+      "xmlns:ns4": "http://www.fixm.aero/app/ffice2/1.0",
+      "xmlns:ns3": "http://www.fixm.aero/base/4.2",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+    },
+    "flight": [
+      {
+        "ns2:arrival": [
+          {
+            "ns2:destinationAerodrome": [
+              {
+                "ns3:locationIndicator": [
+                  "KMCO"
+                ]
+              }
+            ],
+            "ns2:destinationAerodromeAlternate": [
+              {
+                "ns3:locationIndicator": [
+                  "KMIA"
+                ]
+              }
+            ]
+          }
+        ],
+        "ns2:departure": [
+          {
+            "ns2:actualTimeOfDeparture": [
+              "2021-02-24T18:34:03.453Z"
+            ],
+            "ns2:aerodrome": [
+              {
+                "ns3:locationIndicator": [
+                  "EDDF"
+                ]
+              }
+            ],
+            "ns2:estimatedOffBlockTime": [
+              "2021-02-24T18:34:03.453Z"
+            ],
+            "ns2:runwayDirection": [
+              "12R"
+            ]
+          }
+        ],
+        "ns2:flightIdentification": [
+          {
+            "ns2:aircraftIdentification": [
+              "DLH796"
+            ]
+          }
+        ],
+        "ns2:gufi": [
+          {
+            "_": "bd0c634a-951c-4f7e-88f4-fba237b20525",
+            "$": {
+              "codeSpace": "urn:uuid"
+            }
+          }
+        ],
+        "ns2:gufiOriginator": [
+          {
+            "ns3:contact": [
+              {
+                "ns3:name": [
+                  "FAA"
+                ],
+                "ns3:title": [
+                  "PROJECT MANAGER"
+                ]
+              }
+            ],
+            "ns3:name": [
+              "FAA"
+            ]
+          }
+        ]
+      }
+    ],
+    "originator": [
+      {
+        "ns3:contact": [
+          {
+            "ns3:name": [
+              "FAA"
+            ],
+            "ns3:title": [
+              "PROJECT MANAGER"
+            ]
+          }
+        ],
+        "ns3:identifier": [
+          "IDENTIFIER"
+        ],
+        "ns3:identifierDomain": [
+          "FF-ICE"
+        ],
+        "ns3:name": [
+          "FAA"
+        ]
+      }
+    ],
+    "recipient": [
+      {
+        "ns3:contact": [
+          {
+            "ns3:name": [
+              "FAA"
+            ],
+            "ns3:title": [
+              "PROJECT MANAGER"
+            ]
+          }
+        ],
+        "ns3:identifier": [
+          "IDENTIFIER"
+        ],
+        "ns3:identifierDomain": [
+          "FF-ICE"
+        ],
+        "ns3:name": [
+          "FAA"
+        ]
+      }
+    ],
+    "timestamp": [
+      "2021-02-24T18:34:03.453Z"
+    ],
+    "type": [
+      "FLIGHT_DEPARTURE"
+    ],
+    "uniqueMessageIdentifier": [
+      {
+        "_": "3ff24818-e31a-4a87-84a0-1cb3240fffed",
+        "$": {
+          "codeSpace": "urn:uuid"
+        }
+      }
+    ]
+  }
+}
