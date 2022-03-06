@@ -86,7 +86,7 @@ parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, impo
     parseString(xml, function (err, result) {
         //var json = JSON.stringify(result, null, 4);
         console.log(util.inspect(result, false, null));
-        console.dir(result.Ffice2Message);
+        console.dir(result);
         var json = JSON.stringify(result, null, 2);
 
         fs.writeFileSync('./tests/output_fixm/AGREED_TRAJECTORY.json', json);
