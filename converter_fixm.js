@@ -17,8 +17,8 @@ var parseString = require('xml2js').parseString;
 
 parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, importsAndIncludes) { 
     // importsAndIncludes contains schemas to be added as well to satisfy all imports and includes found in xsd file
-
-    /keep
+    
+    //convert xml to json
     parseString(xml, function (err, result) {
         //var json = JSON.stringify(result, null, 4);
         console.log(util.inspect(result, false, null));
