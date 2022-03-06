@@ -28,12 +28,3 @@ parser.addSchema('http://www.fixm.aero/app/ffice2/1.0', xsd, function (err, impo
         fs.writeFileSync('./tests/output_fixm/AGREED_TRAJECTORY.json', json);
     });
 });
-
-
-
-
-
-
-
-
-
