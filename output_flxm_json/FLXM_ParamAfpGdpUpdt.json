@@ -1,0 +1,871 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ../Schema_Files/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2016-03-11T15:08:52"
+    ],
+    "type": [
+      "PARAM"
+    ],
+    "source": [
+      "TFMS"
+    ],
+    "destination": [
+      "ALL"
+    ],
+    "sensitivityType": [
+      "A"
+    ],
+    "visibilityDomain": [
+      "PUBLIC"
+    ],
+    "trafficManagementInitiative": [
+      {
+        "$": {
+          "tmiType": "GDP"
+        },
+        "flxf:tmiIdentifier": [
+          {
+            "flxf:designator": [
+              "GDP01"
+            ]
+          }
+        ],
+        "flxf:tmiStatus": [
+          "ACTUAL"
+        ],
+        "flxf:information": [
+          {
+            "flxf:gdpInformation": [
+              {
+                "flxf:impactingCondition": [
+                  "8001"
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:initiativeParameters": [
+          {
+            "flxf:timeParameters": [
+              {
+                "flxf:gdpTimeParameters": [
+                  {
+                    "flxf:cumulativeProgramPeriod": [
+                      {
+                        "startDateTime": [
+                          "2016-03-11T15:03:00.000Z"
+                        ],
+                        "endDateTime": [
+                          "2016-03-11T23:59:00.000Z"
+                        ]
+                      }
+                    ],
+                    "flxf:issueDateTime": [
+                      "2016-03-11T15:03:00.000Z"
+                    ],
+                    "flxf:lastUpdateDateTime": [
+                      "2016-03-11T15:03:54.000Z"
+                    ],
+                    "flxf:modelDateTime": [
+                      "2016-03-11T15:03:54.000Z"
+                    ],
+                    "flxf:tmiPeriod": [
+                      {
+                        "startDateTime": [
+                          "2016-03-11T15:03:00"
+                        ],
+                        "endDateTime": [
+                          "2016-03-11T23:59:00"
+                        ]
+                      }
+                    ],
+                    "flxf:nowPlus": [
+                      "PT45M"
+                    ],
+                    "flxf:earliestSlot": [
+                      "PT0M"
+                    ],
+                    "flxf:lastProgramEndDateTime": [
+                      {
+                        "$": {
+                          "xsi:nil": "true",
+                          "nilReason": "INAPPLICABLE"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:scopeParameters": [
+              {
+                "flxf:gdpScopeParameters": [
+                  {
+                    "flxf:applyToResource": [
+                      {
+                        "$": {
+                          "type": "AIRPORT"
+                        },
+                        "flxf:airport": [
+                          {
+                            "flxf:designator": [
+                              "SFO"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "flxf:programExemptType": [
+                      "BY_TIERS"
+                    ],
+                    "flxf:scopeFilter": [
+                      {
+                        "flxf:filterCombination": [
+                          {
+                            "$": {
+                              "logicalOperator": "AND",
+                              "id": "FC1"
+                            },
+                            "flxf:operand": [
+                              {
+                                "$": {
+                                  "id": "FC1_OP1",
+                                  "index": "1"
+                                },
+                                "flxf:filterCombination": [
+                                  {
+                                    "$": {
+                                      "logicalOperator": "ANDNOT",
+                                      "id": "FC2"
+                                    },
+                                    "flxf:operand": [
+                                      {
+                                        "$": {
+                                          "id": "FC2_OP1",
+                                          "index": "1"
+                                        },
+                                        "flxf:filterCombination": [
+                                          {
+                                            "$": {
+                                              "logicalOperator": "AND",
+                                              "id": "FC3"
+                                            },
+                                            "flxf:operand": [
+                                              {
+                                                "$": {
+                                                  "id": "FC3_OP1",
+                                                  "index": "1"
+                                                },
+                                                "flxf:filterCombination": [
+                                                  {
+                                                    "$": {
+                                                      "logicalOperator": "OR",
+                                                      "id": "ANY_DEPARTS_CENTER"
+                                                    },
+                                                    "flxf:operand": [
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_1",
+                                                          "index": "1"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZSE"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_2",
+                                                          "index": "2"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZAB"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_3",
+                                                          "index": "3"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZLC"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_4",
+                                                          "index": "4"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZAN"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_5",
+                                                          "index": "5"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZAU"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_6",
+                                                          "index": "6"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZSU"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_7",
+                                                          "index": "7"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZLA"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_8",
+                                                          "index": "8"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZDC"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_9",
+                                                          "index": "9"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZFW"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_10",
+                                                          "index": "10"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZKC"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_11",
+                                                          "index": "11"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZME"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_12",
+                                                          "index": "12"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZHU"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_13",
+                                                          "index": "13"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZMP"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_14",
+                                                          "index": "14"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZDV"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_15",
+                                                          "index": "15"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZBW"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_16",
+                                                          "index": "16"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZHN"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_17",
+                                                          "index": "17"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZOB"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_18",
+                                                          "index": "18"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZOA"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_19",
+                                                          "index": "19"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZJX"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_20",
+                                                          "index": "20"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZMA"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_21",
+                                                          "index": "21"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZID"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_22",
+                                                          "index": "22"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZTL"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "$": {
+                                                          "id": "DEP_CNTR_23",
+                                                          "index": "23"
+                                                        },
+                                                        "flxf:departsAirspace": [
+                                                          {
+                                                            "$": {
+                                                              "type": "CENTER"
+                                                            },
+                                                            "flxf:designator": [
+                                                              "ZNY"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "$": {
+                                                  "id": "FC3_OP2",
+                                                  "index": "2"
+                                                },
+                                                "flxf:aircraftCategory": [
+                                                  "OTHER:ALL"
+                                                ]
+                                              },
+                                              {
+                                                "$": {
+                                                  "id": "FC3_OP3",
+                                                  "index": "3"
+                                                },
+                                                "flxf:arrivesDesignatedPoint": [
+                                                  {
+                                                    "$": {
+                                                      "type": "AFIX"
+                                                    },
+                                                    "flxf:designator": [
+                                                      {
+                                                        "$": {
+                                                          "xsi:nil": "true",
+                                                          "nilReason": "OTHER:ALL"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "$": {
+                                                  "id": "FC3_OP4",
+                                                  "index": "4"
+                                                },
+                                                "flxf:aircaftOperator": [
+                                                  {
+                                                    "$": {
+                                                      "xsi:nil": "true",
+                                                      "nilReason": "OTHER:ALL"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:generalParameters": [
+              {
+                "flxf:gdpGeneralParameters": [
+                  {
+                    "flxf:chargeToNonFAA": [
+                      "NO"
+                    ],
+                    "flxf:departureExemptionType": [
+                      "BY_TIME"
+                    ],
+                    "flxf:chargeToFacility": [
+                      {
+                        "flxf:airport": [
+                          {
+                            "flxf:designator": [
+                              "SFO"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "flxf:delayCeiling": [
+                      "PT999M"
+                    ],
+                    "flxf:delayLimit": [
+                      "PT180M"
+                    ],
+                    "flxf:delayMultiplier": [
+                      "1.0"
+                    ],
+                    "flxf:purgeFlightAfterRevision": [
+                      "FALSE"
+                    ],
+                    "flxf:purgeFlightBeforeRevision": [
+                      "FALSE"
+                    ],
+                    "flxf:stackValue": [
+                      "2"
+                    ],
+                    "flxf:delayAssignmentMode": [
+                      "UDP"
+                    ],
+                    "flxf:operationAlgorithm": [
+                      "RBS++"
+                    ],
+                    "flxf:compression": [
+                      {
+                        "flxf:compressLastCldt": [
+                          "TRUE"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:rateParameters": [
+              {
+                "flxf:gdpRateParameters": [
+                  {
+                    "flxf:programRate": [
+                      {
+                        "$": {
+                          "rateDuration": "PT15M",
+                          "rateType": "ARRIVAL",
+                          "intervalsCount": "148"
+                        },
+                        "startDateTime": [
+                          "2016-03-11T14:00:00.000Z"
+                        ],
+                        "rate": [
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "1"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "2"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "3"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "4"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "5"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "6"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "7"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "8"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "9"
+                            }
+                          },
+                          {
+                            "_": "15",
+                            "$": {
+                              "seq": "10"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "flxf:reservedRate": [
+                      {
+                        "$": {
+                          "rateDuration": "PT15M",
+                          "rateType": "ARRIVAL",
+                          "intervalsCount": "148"
+                        },
+                        "startDateTime": [
+                          "2016-03-11T14:00:00.000Z"
+                        ],
+                        "rate": [
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "1"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "2"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "3"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "4"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "5"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "6"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "7"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "8"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "9"
+                            }
+                          },
+                          {
+                            "_": "0",
+                            "$": {
+                              "seq": "10"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "flxf:setAAR": [
+                      "PR"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:statistics": [
+          {
+            "flxf:gdpStatistics": [
+              {
+                "flxf:totalAffectedFlights": [
+                  "90"
+                ],
+                "flxf:totalFlights": [
+                  "253"
+                ],
+                "flxf:delayAfterTmi": [
+                  {
+                    "flxf:average": [
+                      "PT54S"
+                    ],
+                    "flxf:maximum": [
+                      "PT24M"
+                    ],
+                    "flxf:minimum": [
+                      "PT0M"
+                    ],
+                    "flxf:total": [
+                      "PT79M"
+                    ]
+                  }
+                ],
+                "flxf:delayBeforeTmi": [
+                  {
+                    "flxf:average": [
+                      "PT0M"
+                    ],
+                    "flxf:maximum": [
+                      "PT1M"
+                    ],
+                    "flxf:minimum": [
+                      "PT0M"
+                    ],
+                    "flxf:total": [
+                      "PT0M"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
