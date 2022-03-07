@@ -105,7 +105,7 @@ var xml = fs.readFileSync('./tests/xml/FIXM/PROPOSAL_RESP.xml', {encoding: 'utf-
 fs.writeFileSync('./tests/output_fixm/PROPOSAL_RESP.json', json);
 ```
 
-#### OUTCOME
+#### FIXM OUTCOME
 E_FPL.json
 
 Packeage builds upon node-xml2js, detects and parses XML Schema that is used to transform Javascript Object into a consistent schema-driven structure.
@@ -174,5 +174,62 @@ from. https://github.com/peerlibrary/node-xml4js
                         ],
 ```
 
+### FLXM OUTCOME
+FLXM_ParamAfpGdpUpdt.json
 
+``` json
+"flxf:initiativeParameters": [
+          {
+            "flxf:timeParameters": [
+              {
+                "flxf:gdpTimeParameters": [
+                  {
+                    "flxf:cumulativeProgramPeriod": [
+                      {
+                        "startDateTime": [
+                          "2016-03-11T15:03:00.000Z"
+                        ],
+                        "endDateTime": [
+                          "2016-03-11T23:59:00.000Z"
+                        ]
+                      }
+                    ],
+                    "flxf:issueDateTime": [
+                      "2016-03-11T15:03:00.000Z"
+                    ],
+                    "flxf:lastUpdateDateTime": [
+                      "2016-03-11T15:03:54.000Z"
+                    ],
+                    "flxf:modelDateTime": [
+                      "2016-03-11T15:03:54.000Z"
+                    ],
+                    "flxf:tmiPeriod": [
+                      {
+                        "startDateTime": [
+                          "2016-03-11T15:03:00"
+                        ],
+                        "endDateTime": [
+                          "2016-03-11T23:59:00"
+                        ]
+                      }
+                    ],
+                    "flxf:nowPlus": [
+                      "PT45M"
+                    ],
+                    "flxf:earliestSlot": [
+                      "PT0M"
+                    ],
+                    "flxf:lastProgramEndDateTime": [
+                      {
+                        "$": {
+                          "xsi:nil": "true",
+                          "nilReason": "INAPPLICABLE"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+```
 
