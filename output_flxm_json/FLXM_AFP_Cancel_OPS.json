@@ -1,0 +1,96 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ../Schema_Files/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2014-11-13T14:36:51Z"
+    ],
+    "type": [
+      "AFP"
+    ],
+    "source": [
+      "TFMS"
+    ],
+    "sensitivityType": [
+      "A"
+    ],
+    "trafficManagementInitiative": [
+      {
+        "$": {
+          "tmiType": "AFP"
+        },
+        "flxf:tmiIdentifier": [
+          {
+            "flxf:designator": [
+              "FCAAFP"
+            ]
+          }
+        ],
+        "flxf:tmiStatus": [
+          "PURGED"
+        ],
+        "flxf:advisory": [
+          {
+            "$": {
+              "advisoryType": "AFP_CANCEL"
+            },
+            "flxf:advisoryEffectivePeriod": [
+              {
+                "startDateTime": [
+                  "2014-11-13T14:35:00Z"
+                ],
+                "endDateTime": [
+                  "2014-11-13T20:30:00Z"
+                ]
+              }
+            ],
+            "flxf:advisoryParameters": [
+              {
+                "flxf:timeParameters": [
+                  {
+                    "flxf:afpTimeParameters": [
+                      {
+                        "flxf:expirationDateTime": [
+                          "2014-11-13T20:30:00Z"
+                        ],
+                        "flxf:lastAdlDateTime": [
+                          "2014-11-13T14:35:14Z"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "flxf:scopeParameters": [
+                  {
+                    "flxf:afpScopeParameters": [
+                      {
+                        "flxf:applyToResource": [
+                          {
+                            "$": {
+                              "type": "FXA"
+                            },
+                            "flxf:fxa": [
+                              {
+                                "flxf:fxaType": [
+                                  "FCA"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

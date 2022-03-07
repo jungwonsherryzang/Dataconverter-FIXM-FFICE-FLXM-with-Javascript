@@ -1,0 +1,819 @@
+{
+  "ds:tfmDataService": {
+    "$": {
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:ds": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice",
+      "xmlns:fcm": "urn:us:gov:dot:faa:atm:tfm:ficommonmessages",
+      "xmlns:nxce": "urn:us:gov:dot:faa:atm:tfm:tfmdatacoreelements",
+      "xmlns:fce": "urn:us:gov:dot:faa:atm:tfm:ficommondatatypes",
+      "xmlns:frt": "urn:us:gov:dot:faa:atm:tfm:rapttimeline",
+      "xmlns:fi": "urn:us:gov:dot:faa:atm:tfm:flowinformation",
+      "xsi:schemaLocation": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice TFMData_Service.xsd"
+    },
+    "ds:fiOutput": [
+      {
+        "fi:fiMessage": [
+          {
+            "$": {
+              "refresh": "RFRS",
+              "sensitivity": "A",
+              "sourceFacility": "DCC",
+              "sourceTimeStamp": "2014-11-13T10:50:35Z",
+              "msgType": "REROUTE"
+            },
+            "fi:reroute": [
+              {
+                "fcm:rerouteGeneralData": [
+                  {
+                    "fcm:rerouteId": [
+                      "rr.dccops.lxstn21.20141113104938"
+                    ],
+                    "fcm:rerouteName": [
+                      "FCAJFK:WIND_ROUTE_OPTION_JFK"
+                    ],
+                    "fcm:rerouteStatus": [
+                      "ACTIVE"
+                    ],
+                    "fcm:tmiId": [
+                      "RRDCC017"
+                    ],
+                    "fcm:tmiStatus": [
+                      "NEW"
+                    ],
+                    "fcm:rerouteDataDomain": [
+                      "PUBLIC"
+                    ],
+                    "fcm:lastUpdateDateTime": [
+                      "2014-11-13T10:50:35Z"
+                    ],
+                    "fcm:originalCreateTime": [
+                      "2014-11-13T10:49:38Z"
+                    ],
+                    "fcm:site": [
+                      "dccops"
+                    ],
+                    "fcm:rerouteWorkstationId": [
+                      "lxstn21"
+                    ],
+                    "fcm:rerouteAirborne": [
+                      "ALL_FLIGHTS"
+                    ],
+                    "fcm:applyProtectedSegments": [
+                      "true"
+                    ],
+                    "fcm:protectedSegment": [
+                      "KK54K KI57O ROD DJB JHW J70 LVZ LENDY6 SPI VHP ROD DJB JHW J70 LVZ LENDY6 PXV ROD DJB JHW J70 LVZ LENDY6 FOD KG75M DAFLU J70 LVZ LENDY6 MSP DLL HASTE DAFLU J70 LVZ LENDY6 GEP DLL HASTE DAFLU J70 LVZ LENDY6 "
+                    ],
+                    "fcm:monitorReroute": [
+                      "true"
+                    ],
+                    "fcm:drawFixes": [
+                      "0"
+                    ],
+                    "fcm:drawNavaids": [
+                      "0"
+                    ],
+                    "fcm:drawRerouteLabel": [
+                      "0"
+                    ],
+                    "fcm:drawRerouteByDefault": [
+                      "0"
+                    ],
+                    "fcm:colorId": [
+                      "26"
+                    ],
+                    "fcm:rerouteTimeType": [
+                      "FCA"
+                    ],
+                    "fcm:rerouteStartTime": [
+                      "2014-11-13T17:00:00Z"
+                    ],
+                    "fcm:rerouteEndTime": [
+                      "2014-11-14T04:30:00Z"
+                    ],
+                    "fcm:fcaName": [
+                      "FCAJFK"
+                    ]
+                  }
+                ],
+                "fcm:rerouteRouteData": [
+                  {
+                    "fcm:rerouteSegmentData": [
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "ZSE",
+                              "ZLA",
+                              "ZKC",
+                              "ZLC",
+                              "ZMP",
+                              "ZOA",
+                              "ZAB",
+                              "ZDV"
+                            ],
+                            "fce:center": [
+                              "ZKC",
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZKC",
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "KK54K KI57O ROD DJB JHW J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "KK54K",
+                          "KI57O",
+                          "ROD",
+                          "DJB",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 6"
+                        ],
+                        "fcm:segmentId": [
+                          "O45"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "ZSE",
+                              "ZKC",
+                              "ZLA",
+                              "ZLC",
+                              "ZDV",
+                              "ZAB",
+                              "ZMP",
+                              "ZOA"
+                            ],
+                            "fce:center": [
+                              "ZKC",
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZKC",
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "SPI VHP ROD DJB JHW J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "SPI",
+                          "VHP",
+                          "ROD",
+                          "DJB",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 5"
+                        ],
+                        "fcm:segmentId": [
+                          "O44"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "ZSE",
+                              "ZLC",
+                              "ZOA",
+                              "ZLA",
+                              "ZAB",
+                              "ZDV",
+                              "ZKC"
+                            ],
+                            "fce:center": [
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZID",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "PXV ROD DJB JHW J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "PXV",
+                          "ROD",
+                          "DJB",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 7"
+                        ],
+                        "fcm:segmentId": [
+                          "O46"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "ZSE",
+                              "ZAB",
+                              "ZDV",
+                              "ZLA",
+                              "ZLC",
+                              "ZMP",
+                              "ZOA"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "FOD KG75M DAFLU J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "FOD",
+                          "KG75M",
+                          "DAFLU",
+                          "BROKK",
+                          "BEWEL",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 4"
+                        ],
+                        "fcm:segmentId": [
+                          "O43"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "MSP"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "MSP DLL HASTE DAFLU J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "MSP",
+                          "DLL",
+                          "HASTE",
+                          "DAFLU",
+                          "BROKK",
+                          "BEWEL",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 2"
+                        ],
+                        "fcm:segmentId": [
+                          "O40"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "fcm:includeSeg": [
+                          "INCLUDE"
+                        ],
+                        "fcm:validSegment": [
+                          "true"
+                        ],
+                        "fcm:originList": [
+                          {
+                            "fce:airport": [
+                              "ZLC",
+                              "ZOA",
+                              "ZSE"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:destinList": [
+                          {
+                            "fce:airport": [
+                              "JFK"
+                            ],
+                            "fce:center": [
+                              "ZMP",
+                              "ZAU",
+                              "ZOB",
+                              "ZNY"
+                            ]
+                          }
+                        ],
+                        "fcm:fullRouteIndicator": [
+                          "FULL"
+                        ],
+                        "fcm:routeSegment": [
+                          "GEP DLL HASTE DAFLU J70 LVZ LENDY6"
+                        ],
+                        "fcm:waypoint": [
+                          "GEP",
+                          "DLL",
+                          "HASTE",
+                          "DAFLU",
+                          "BROKK",
+                          "BEWEL",
+                          "JHW",
+                          "HOXIE",
+                          "DMACK",
+                          "STENT",
+                          "MAGIO",
+                          "LVZ",
+                          "JENNO",
+                          "HARTY",
+                          "MUGZY",
+                          "STW",
+                          "LENDY",
+                          "LGA",
+                          "JFK"
+                        ],
+                        "fcm:routeType": [
+                          "NONE"
+                        ],
+                        "fcm:segmentSourcename": [
+                          "WIND ROUTE OPTION JFK"
+                        ],
+                        "fcm:segmentRemarks": [
+                          "JFK 1"
+                        ],
+                        "fcm:segmentId": [
+                          "O41"
+                        ],
+                        "fcm:routeSegFilterConditions": [
+                          {
+                            "fcm:lowFltLevelFilter": [
+                              "0"
+                            ],
+                            "fcm:highFltLevelFilter": [
+                              "600"
+                            ],
+                            "fcm:aircraftCategoryFilter": [
+                              {
+                                "fcm:category": [
+                                  "JET"
+                                ]
+                              }
+                            ],
+                            "fcm:userCatFilter": [
+                              {
+                                "fcm:userCategory": [
+                                  "GENERAL_AVIATION",
+                                  "AIR_TAXI",
+                                  "CARGO",
+                                  "COMMERCIAL"
+                                ]
+                              }
+                            ],
+                            "fcm:rvsmFilter": [
+                              "ALL"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "fcm:rerouteAdvisoryList": [
+                  {
+                    "fcm:tmiId": [
+                      "RRDCC017"
+                    ],
+                    "fcm:advisoryNumber": [
+                      "017"
+                    ],
+                    "fcm:advisoryDate": [
+                      "2014-11-13"
+                    ],
+                    "fcm:advisoryMsgType": [
+                      "ADVISORY"
+                    ],
+                    "fcm:advisoryCategory": [
+                      "FCA"
+                    ],
+                    "fcm:advisoryAction": [
+                      "RQD"
+                    ],
+                    "fcm:constrainedArea": [
+                      "ZAU"
+                    ],
+                    "fcm:reason": [
+                      "VOLUME"
+                    ],
+                    "fcm:includeTraffic": [
+                      "MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO JFK"
+                    ],
+                    "fcm:facilitiesIncludedList": [
+                      {
+                        "fce:facilityId": [
+                          "ZAB",
+                          "ZAU",
+                          "ZDV",
+                          "ZID",
+                          "ZKC",
+                          "ZLA",
+                          "ZLC",
+                          "ZMP",
+                          "ZNY",
+                          "ZOA",
+                          "ZOB",
+                          "ZSE"
+                        ]
+                      }
+                    ],
+                    "fcm:advisoryValidPeriod": [
+                      {
+                        "fce:startTime": [
+                          "2014-11-13T17:00:00Z"
+                        ],
+                        "fce:endTime": [
+                          "2014-11-14T04:30:00Z"
+                        ]
+                      }
+                    ],
+                    "fcm:probabilityOfExtension": [
+                      "NONE"
+                    ],
+                    "fcm:remarks": [
+                      "ATCSCC ADVZY 017 DCC 11/13/14 FCA RQD \r\nNAME: FCAJFK:WIND_ROUTE_OPTION_JFK \r\nCONSTRAINED AREA: ZAU \r\nREASON: VOLUME \r\nINCLUDE TRAFFIC: MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO  \r\n                 JFK \r\nFACILITIES INCLUDED: ZAB/ZAU/ZDV/ZID/ZKC/ZLA/ZLC/ZMP/ZNY/ZOA/ZOB/ZSE \r\nFLIGHT STATUS: ALL_FLIGHTS \r\nVALID: FCA ENTRY TIME FROM 131700 TO 140430 \r\nPROBABILITY OF EXTENSION: NONE \r\nREMARKS: SEE DYNAMIC LIST FOR UPDATES. \r\nASSOCIATED RESTRICTIONS: SEE NTML. \r\nMODIFICATIONS:  \r\nROUTES: \r\nORIG                DEST                 ROUTE \r\n----                ----                 ----- \r\nMSP                 JFK                  >MSP DLL HASTE DAFLU J70    \r\n                                         LVZ LENDY6<                 \r\nZLC ZOA ZSE         JFK                  >GEP DLL HASTE DAFLU J70    \r\n                                         LVZ LENDY6<                 \r\nZSE ZAB ZDV ZLA     JFK                  >FOD KG75M DAFLU J70 LVZ    \r\nZLC ZMP ZOA                              LENDY6<                     \r\nZSE ZKC ZLA ZLC     JFK                  >SPI VHP ROD DJB JHW J70    \r\nZDV ZAB ZMP ZOA                          LVZ LENDY6<                 \r\nZSE ZLA ZKC ZLC     JFK                  >KK54K KI57O ROD DJB JHW    \r\nZMP ZOA ZAB ZDV                          J70 LVZ LENDY6<             \r\nZSE ZLC ZOA ZLA     JFK                  >PXV ROD DJB JHW J70 LVZ    \r\nZAB ZDV ZKC                              LENDY6<                     \r\nTMI ID: RRDCC017 \r\n131050-140430"
+                    ],
+                    "fcm:associatedRestrictions": [
+                      "SEE NTML."
+                    ],
+                    "fcm:advisoryText": [
+                      "ATCSCC ADVZY 017 DCC 11/13/14 FCA RQD \r\nNAME: FCAJFK:WIND_ROUTE_OPTION_JFK \r\nCONSTRAINED AREA: ZAU \r\nREASON: VOLUME \r\nINCLUDE TRAFFIC: MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO  \r\n                 JFK \r\nFACILITIES INCLUDED: ZAB/ZAU/ZDV/ZID/ZKC/ZLA/ZLC/ZMP/ZNY/ZOA/ZOB/ZSE \r\nFLIGHT STATUS: ALL_FLIGHTS \r\nVALID: FCA ENTRY TIME FROM 131700 TO 140430 \r\nPROBABILITY OF EXTENSION: NONE \r\nREMARKS: SEE DYNAMIC LIST FOR UPDATES. \r\nASSOCIATED RESTRICTIONS: SEE NTML. \r\nMODIFICATIONS:  \r\nROUTES: \r\nORIG                DEST                 ROUTE \r\n----                ----                 ----- \r\nMSP                 JFK                  >MSP DLL HASTE DAFLU J70    \r\n                                         LVZ LENDY6<                 \r\nZLC ZOA ZSE         JFK                  >GEP DLL HASTE DAFLU J70    \r\n                                         LVZ LENDY6<                 \r\nZSE ZAB ZDV ZLA     JFK                  >FOD KG75M DAFLU J70 LVZ    \r\nZLC ZMP ZOA                              LENDY6<                     \r\nZSE ZKC ZLA ZLC     JFK                  >SPI VHP ROD DJB JHW J70    \r\nZDV ZAB ZMP ZOA                          LVZ LENDY6<                 \r\nZSE ZLA ZKC ZLC     JFK                  >KK54K KI57O ROD DJB JHW    \r\nZMP ZOA ZAB ZDV                          J70 LVZ LENDY6<             \r\nZSE ZLC ZOA ZLA     JFK                  >PXV ROD DJB JHW J70 LVZ    \r\nZAB ZDV ZKC                              LENDY6<                     \r\nTMI ID: RRDCC017 \r\n131050-140430"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

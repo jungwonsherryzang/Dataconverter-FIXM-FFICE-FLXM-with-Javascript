@@ -1,0 +1,63 @@
+{
+  "ds:tfmDataService": {
+    "$": {
+      "xmlns:ds": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:fcm": "urn:us:gov:dot:faa:atm:tfm:ficommonmessages",
+      "xmlns:nxce": "urn:us:gov:dot:faa:atm:tfm:tfmdatacoreelements",
+      "xmlns:fce": "urn:us:gov:dot:faa:atm:tfm:ficommondatatypes",
+      "xmlns:frt": "urn:us:gov:dot:faa:atm:tfm:rapttimeline",
+      "xmlns:fi": "urn:us:gov:dot:faa:atm:tfm:flowinformation",
+      "xsi:schemaLocation": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice TFMData_Service.xsd"
+    },
+    "ds:fiOutput": [
+      {
+        "fi:fiMessage": [
+          {
+            "$": {
+              "sensitivity": "A",
+              "sourceFacility": "TFMS",
+              "sourceTimeStamp": "2015-01-06T17:18:23Z",
+              "msgType": "GS"
+            },
+            "fi:gsCancel": [
+              {
+                "fcm:updateTime": [
+                  "2015-01-06T17:18:23Z"
+                ],
+                "fcm:tmiStatus": [
+                  "ACTUAL"
+                ],
+                "fcm:airportId": [
+                  "DCA"
+                ],
+                "fcm:center": [
+                  "ZDC"
+                ],
+                "fcm:pgmExpTime": [
+                  "2015-01-06T18:30:00Z"
+                ],
+                "fcm:elementType": [
+                  "APT"
+                ],
+                "fcm:adlTime": [
+                  "2015-01-06T17:15:48Z"
+                ],
+                "fcm:advisoryValidPeriod": [
+                  {
+                    "fce:startTime": [
+                      "2015-01-06T17:17:00Z"
+                    ],
+                    "fce:endTime": [
+                      "2015-01-06T18:30:00Z"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

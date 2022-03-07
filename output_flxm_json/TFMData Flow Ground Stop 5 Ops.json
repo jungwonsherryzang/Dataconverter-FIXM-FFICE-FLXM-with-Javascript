@@ -1,0 +1,1110 @@
+{
+  "ds:tfmDataService": {
+    "$": {
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:ds": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice",
+      "xmlns:fcm": "urn:us:gov:dot:faa:atm:tfm:ficommonmessages",
+      "xmlns:nxce": "urn:us:gov:dot:faa:atm:tfm:tfmdatacoreelements",
+      "xmlns:fce": "urn:us:gov:dot:faa:atm:tfm:ficommondatatypes",
+      "xmlns:frt": "urn:us:gov:dot:faa:atm:tfm:rapttimeline",
+      "xmlns:fi": "urn:us:gov:dot:faa:atm:tfm:flowinformation",
+      "xsi:schemaLocation": "urn:us:gov:dot:faa:atm:tfm:tfmdataservice TFMData_Service.xsd"
+    },
+    "ds:fiOutput": [
+      {
+        "fi:fiMessage": [
+          {
+            "$": {
+              "sensitivity": "A",
+              "sourceFacility": "TFMS",
+              "sourceTimeStamp": "2014-11-14T15:17:06Z",
+              "msgType": "GS"
+            },
+            "fi:gsAdvisory": [
+              {
+                "fcm:advisoryTypeName": [
+                  "CDM GROUND STOP"
+                ],
+                "fcm:updateTime": [
+                  "2014-11-14T15:17:06Z"
+                ],
+                "fcm:tmiStatus": [
+                  "ACTUAL"
+                ],
+                "fcm:currentDelays": [
+                  {
+                    "fce:totalDelay": [
+                      "0"
+                    ],
+                    "fce:maxDelay": [
+                      "0"
+                    ],
+                    "fce:avgDelay": [
+                      "0.0"
+                    ]
+                  }
+                ],
+                "fcm:anticipatedDelays": [
+                  {
+                    "fce:totalDelay": [
+                      "4031"
+                    ],
+                    "fce:maxDelay": [
+                      "122"
+                    ],
+                    "fce:avgDelay": [
+                      "58.4"
+                    ]
+                  }
+                ],
+                "fcm:airportId": [
+                  "BOS"
+                ],
+                "fcm:center": [
+                  "ZBW"
+                ],
+                "fcm:pgmExpTime": [
+                  "2014-11-14T17:15:00Z"
+                ],
+                "fcm:elementType": [
+                  "APT"
+                ],
+                "fcm:adlTime": [
+                  "2014-11-14T15:15:26Z"
+                ],
+                "fcm:groundStopPeriod": [
+                  {
+                    "fce:startTime": [
+                      "2014-11-14T15:05:00Z"
+                    ],
+                    "fce:endTime": [
+                      "2014-11-14T17:15:00Z"
+                    ]
+                  }
+                ],
+                "fcm:cumulativeProgramPeriod": [
+                  {
+                    "fce:startTime": [
+                      "2014-11-14T15:05:00Z"
+                    ],
+                    "fce:endTime": [
+                      "2014-11-14T17:15:00Z"
+                    ]
+                  }
+                ],
+                "fcm:flightInclusionsList": [
+                  {
+                    "fce:flightInfo": [
+                      {
+                        "fce:flightId": [
+                          "KAP49"
+                        ],
+                        "fce:carrier": [
+                          "KAP"
+                        ],
+                        "fce:propulsion": [
+                          "PROPELLER"
+                        ],
+                        "fce:arrivalFix": [
+                          "FREDO"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "TFF20"
+                        ],
+                        "fce:carrier": [
+                          "TFF"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "EJA895"
+                        ],
+                        "fce:carrier": [
+                          "EJA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "N620V"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "SCUPP"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL2678"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU518"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "FLG4279"
+                        ],
+                        "fce:carrier": [
+                          "FLG"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL2674"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL2676"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE2142"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL437"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU2380"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "EJA611"
+                        ],
+                        "fce:carrier": [
+                          "EJA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE2144"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU160"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "PEN268"
+                        ],
+                        "fce:carrier": [
+                          "PEN"
+                        ],
+                        "fce:propulsion": [
+                          "TURBO"
+                        ],
+                        "fce:arrivalFix": [
+                          "LWM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU626"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE2033"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE1804"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU1216"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU390"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE2110"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE2112"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU56"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU816"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "SWA4299"
+                        ],
+                        "fce:carrier": [
+                          "SWA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "KAP585"
+                        ],
+                        "fce:carrier": [
+                          "KAP"
+                        ],
+                        "fce:propulsion": [
+                          "PROPELLER"
+                        ],
+                        "fce:arrivalFix": [
+                          "LWM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "PDT6219"
+                        ],
+                        "fce:carrier": [
+                          "PDT"
+                        ],
+                        "fce:propulsion": [
+                          "TURBO"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU1486"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "N560HM"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "EJA284"
+                        ],
+                        "fce:carrier": [
+                          "EJA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "RPA5887"
+                        ],
+                        "fce:carrier": [
+                          "RPA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "SWA547"
+                        ],
+                        "fce:carrier": [
+                          "SWA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE1982"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "ASQ6172"
+                        ],
+                        "fce:carrier": [
+                          "ASQ"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "FLG3794"
+                        ],
+                        "fce:carrier": [
+                          "FLG"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "PEN126"
+                        ],
+                        "fce:carrier": [
+                          "PEN"
+                        ],
+                        "fce:propulsion": [
+                          "TURBO"
+                        ],
+                        "fce:arrivalFix": [
+                          "LWM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "CHQ6409"
+                        ],
+                        "fce:carrier": [
+                          "CHQ"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU1246"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "FLG3406"
+                        ],
+                        "fce:carrier": [
+                          "FLG"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE1937"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "UAL1617"
+                        ],
+                        "fce:carrier": [
+                          "UAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL1100"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AAL1516"
+                        ],
+                        "fce:carrier": [
+                          "AAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "LOBBY"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "TRS119"
+                        ],
+                        "fce:carrier": [
+                          "TRS"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL1200"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "EJA898"
+                        ],
+                        "fce:carrier": [
+                          "EJA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL560"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "SCUPP"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU152"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU1410"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU192"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL818"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU252"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU722"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "SWA755"
+                        ],
+                        "fce:carrier": [
+                          "SWA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "NKS204"
+                        ],
+                        "fce:carrier": [
+                          "NKS"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AAL1448"
+                        ],
+                        "fce:carrier": [
+                          "AAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "SWA3484"
+                        ],
+                        "fce:carrier": [
+                          "SWA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "UAL1578"
+                        ],
+                        "fce:carrier": [
+                          "UAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "UAL1295"
+                        ],
+                        "fce:carrier": [
+                          "UAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "PVD"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "DAL1210"
+                        ],
+                        "fce:carrier": [
+                          "DAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "AWE646"
+                        ],
+                        "fce:carrier": [
+                          "AWE"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "ASA768"
+                        ],
+                        "fce:carrier": [
+                          "ASA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "ASA30"
+                        ],
+                        "fce:carrier": [
+                          "ASA"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU288"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "JBU434"
+                        ],
+                        "fce:carrier": [
+                          "JBU"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "VRD360"
+                        ],
+                        "fce:carrier": [
+                          "VRD"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "UAL768"
+                        ],
+                        "fce:carrier": [
+                          "UAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      },
+                      {
+                        "fce:flightId": [
+                          "UAL506"
+                        ],
+                        "fce:carrier": [
+                          "UAL"
+                        ],
+                        "fce:propulsion": [
+                          "JET"
+                        ],
+                        "fce:arrivalFix": [
+                          "GDM"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "fcm:departureFacilitiesIncludedList": [
+                  {
+                    "fce:facilityId": [
+                      "ZSE",
+                      "ZAB",
+                      "ZLC",
+                      "ZAU",
+                      "ZLA",
+                      "ZDC",
+                      "ZFW",
+                      "ZKC",
+                      "ZME",
+                      "ZHU",
+                      "ZMP",
+                      "ZDV",
+                      "ZBW",
+                      "ZOB",
+                      "ZOA",
+                      "ZJX",
+                      "ZMA",
+                      "ZID",
+                      "ZTL",
+                      "ZNY"
+                    ]
+                  }
+                ],
+                "fcm:aircraftTypesIncluded": [
+                  "JET AND PROP ONLY"
+                ],
+                "fcm:impactingCondition": [
+                  "OTHER"
+                ],
+                "fcm:advisoryValidPeriod": [
+                  {
+                    "fce:startTime": [
+                      "2014-11-14T15:05:00Z"
+                    ],
+                    "fce:endTime": [
+                      "2014-11-14T17:15:00Z"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

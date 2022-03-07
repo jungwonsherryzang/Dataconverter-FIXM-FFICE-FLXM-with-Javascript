@@ -1,0 +1,470 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ../Schema_Files/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2019-04-24T11:38:00Z"
+    ],
+    "type": [
+      "DEMAND_CAPACITY"
+    ],
+    "source": [
+      "DCC"
+    ],
+    "sensitivityType": [
+      "A"
+    ],
+    "refreshType": [
+      "RFRS"
+    ],
+    "demandCapacityResource": [
+      {
+        "$": {
+          "type": "AIRPORT"
+        },
+        "flxf:airport": [
+          {
+            "flxf:designator": [
+              "IAD"
+            ]
+          }
+        ],
+        "flxf:isPartOf": [
+          {
+            "$": {
+              "type": "AIRSPACE"
+            },
+            "flxf:airspace": [
+              {
+                "$": {
+                  "type": "CENTER"
+                },
+                "flxf:designator": [
+                  "ZDC"
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:resourceCapacity": [
+          {
+            "flxf:declaredRate": [
+              {
+                "$": {
+                  "rateDuration": "PT15M",
+                  "rateType": "ARRIVAL",
+                  "intervalsCount": "10"
+                },
+                "startDateTime": [
+                  "2019-04-24T14:38:00Z"
+                ],
+                "rate": [
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "1"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "2"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "3"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "4"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "5"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "6"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "7"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "8"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "9"
+                    }
+                  },
+                  {
+                    "_": "10",
+                    "$": {
+                      "seq": "10"
+                    }
+                  }
+                ]
+              }
+            ],
+            "flxf:operationalRate": [
+              {
+                "$": {
+                  "rateDuration": "PT15M",
+                  "rateType": "ARRIVAL",
+                  "intervalsCount": "10"
+                },
+                "startDateTime": [
+                  "2019-04-24T14:38:00Z "
+                ],
+                "rate": [
+                  {
+                    "_": "9",
+                    "$": {
+                      "seq": "1"
+                    }
+                  },
+                  {
+                    "_": "8",
+                    "$": {
+                      "seq": "2"
+                    }
+                  },
+                  {
+                    "_": "6",
+                    "$": {
+                      "seq": "3"
+                    }
+                  },
+                  {
+                    "_": "7",
+                    "$": {
+                      "seq": "4"
+                    }
+                  },
+                  {
+                    "_": "9",
+                    "$": {
+                      "seq": "5"
+                    }
+                  },
+                  {
+                    "_": "7",
+                    "$": {
+                      "seq": "6"
+                    }
+                  },
+                  {
+                    "_": "7",
+                    "$": {
+                      "seq": "7"
+                    }
+                  },
+                  {
+                    "_": "8",
+                    "$": {
+                      "seq": "8"
+                    }
+                  },
+                  {
+                    "_": "7",
+                    "$": {
+                      "seq": "9"
+                    }
+                  },
+                  {
+                    "_": "6",
+                    "$": {
+                      "seq": "10"
+                    }
+                  }
+                ]
+              }
+            ],
+            "flxf:unassignedSlotList": [
+              {
+                "$": {
+                  "slotsAvailable": "TRUE"
+                },
+                "flxf:slot": [
+                  {
+                    "flxf:controlledAirport": [
+                      {
+                        "flxf:designator": [
+                          "IAD"
+                        ]
+                      }
+                    ],
+                    "flxf:slotTime": [
+                      "2019-04-24T14:38:00Z"
+                    ],
+                    "flxf:uniqueLetter": [
+                      "A"
+                    ]
+                  },
+                  {
+                    "flxf:controlledAirport": [
+                      {
+                        "flxf:designator": [
+                          "IAD"
+                        ]
+                      }
+                    ],
+                    "flxf:slotTime": [
+                      "2019-04-24T14:39:00Z"
+                    ],
+                    "flxf:uniqueLetter": [
+                      "A"
+                    ]
+                  },
+                  {
+                    "flxf:controlledAirport": [
+                      {
+                        "flxf:designator": [
+                          "IAD"
+                        ]
+                      }
+                    ],
+                    "flxf:slotTime": [
+                      "2019-04-24T14:40:00Z"
+                    ],
+                    "flxf:uniqueLetter": [
+                      "A"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:resourceDemand": [
+          {
+            "flxf:flightList": [
+              {
+                "flxf:timePeriod": [
+                  {
+                    "startDateTime": [
+                      "2019-04-24T14:38:00Z"
+                    ],
+                    "endDateTime": [
+                      "2019-04-24T16:38:00Z"
+                    ]
+                  }
+                ],
+                "flxf:flight": [
+                  {
+                    "flxf:gufi": [
+                      "1234dcdb-67bb-45be-9bd1-6ea6cd5290a4"
+                    ]
+                  },
+                  {
+                    "flxf:gufi": [
+                      "3424dcdb-67bb-45be-9bd1-6ea6cd5290a3"
+                    ]
+                  },
+                  {
+                    "flxf:gufi": [
+                      "7434dcdb-67bb-45be-9bd1-6ea6cd5290a5"
+                    ]
+                  },
+                  {
+                    "flxf:gufi": [
+                      "2365dcdb-67bb-45be-9bd1-6ea6cd5290a7"
+                    ]
+                  },
+                  {
+                    "flxf:gufi": [
+                      "3002dcdb-67bb-45be-9bd1-6ea6cd5290a9"
+                    ]
+                  },
+                  {
+                    "flxf:gufi": [
+                      "8567dcdb-67bb-45be-9bd1-6ea6cd5290a0"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:historicUnscheduledFlightDemand": [
+              {
+                "$": {
+                  "confidenceLevel": "LOW"
+                },
+                "flxf:unscheduledFlightDemandRate": [
+                  {
+                    "$": {
+                      "rateDuration": "PT15M",
+                      "rateType": "ARRIVAL"
+                    },
+                    "startDateTime": [
+                      "2019-04-24T14:38:00Z"
+                    ],
+                    "rate": [
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "1"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "2"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "3"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "4"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "5"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "6"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "7"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "8"
+                        }
+                      },
+                      {
+                        "_": "0",
+                        "$": {
+                          "seq": "9"
+                        }
+                      },
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "10"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "$": {
+                  "confidenceLevel": "MEDIUM"
+                },
+                "flxf:unscheduledFlightDemandRate": [
+                  {
+                    "$": {
+                      "rateDuration": "PT15M",
+                      "rateType": "ARRIVAL"
+                    },
+                    "startDateTime": [
+                      "2019-04-24T14:38:00Z"
+                    ],
+                    "rate": [
+                      {
+                        "_": "1",
+                        "$": {
+                          "seq": "1"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "2"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "3"
+                        }
+                      },
+                      {
+                        "_": "3",
+                        "$": {
+                          "seq": "4"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "5"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "6"
+                        }
+                      },
+                      {
+                        "_": "3",
+                        "$": {
+                          "seq": "7"
+                        }
+                      },
+                      {
+                        "_": "3",
+                        "$": {
+                          "seq": "8"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "9"
+                        }
+                      },
+                      {
+                        "_": "2",
+                        "$": {
+                          "seq": "10"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

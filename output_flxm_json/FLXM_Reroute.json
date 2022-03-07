@@ -1,0 +1,1002 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ./xsd/FLXM/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2019-04-24T14:38:00Z"
+    ],
+    "type": [
+      "FCA"
+    ],
+    "source": [
+      "FAA"
+    ],
+    "trafficManagementInitiative": [
+      {
+        "$": {
+          "tmiType": "REROUTE"
+        },
+        "flxf:tmiIdentifier": [
+          {
+            "flxf:designator": [
+              "RRDCC017"
+            ],
+            "flxf:revisionNumber": [
+              "1"
+            ]
+          }
+        ],
+        "flxf:tmiStatus": [
+          "NEW"
+        ],
+        "flxf:information": [
+          {
+            "flxf:rerouteInformation": [
+              {
+                "flxf:createSiteId": [
+                  "DCCOPS"
+                ],
+                "flxf:createWorkstationId": [
+                  "LXSTN21"
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:initiativeParameters": [
+          {
+            "flxf:timeParameters": [
+              {
+                "flxf:rerouteTimeParameters": [
+                  {
+                    "flxf:lastUpdateDateTime": [
+                      "2014-11-13T10:50:35Z"
+                    ],
+                    "flxf:originalCreateDateTime": [
+                      "2014-11-13T10:49:38Z"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:scopeParameters": [
+              {
+                "flxf:rerouteScopeParameters": [
+                  {
+                    "flxf:applyToResource": [
+                      {
+                        "$": {
+                          "type": "FXA"
+                        },
+                        "flxf:fxa": [
+                          {
+                            "flxf:designator": [
+                              "FCAJFK"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "flxf:originDestinationList": [
+                      {
+                        "flxf:originDestination": [
+                          {
+                            "flxf:originResourceList": [
+                              {
+                                "flxf:resource": [
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZSE"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZLA"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZKC"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZLC"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZMP"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZOA"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZAB"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZDV"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZID"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZOB"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZNY"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "flxf:destinationResourceList": [
+                              {
+                                "flxf:resource": [
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZKC"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZID"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZOB"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRSPACE"
+                                    },
+                                    "flxf:airspace": [
+                                      {
+                                        "$": {
+                                          "type": "CENTER"
+                                        },
+                                        "flxf:designator": [
+                                          "ZNY"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$": {
+                                      "type": "AIRPORT"
+                                    },
+                                    "flxf:airport": [
+                                      {
+                                        "flxf:designator": [
+                                          "JFK"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "flxf:rerouteSegmentList": [
+                              {
+                                "flxf:routeSegment": [
+                                  {
+                                    "$": {
+                                      "seq": "1"
+                                    },
+                                    "flxf:filterSummary": [
+                                      {
+                                        "$": {
+                                          "xsi:nil": "true"
+                                        }
+                                      }
+                                    ],
+                                    "flxf:preferredRouteIndicator": [
+                                      {
+                                        "$": {
+                                          "xsi:nil": "true"
+                                        }
+                                      }
+                                    ],
+                                    "flxf:routeSegmentId": [
+                                      "045"
+                                    ],
+                                    "flxf:segmentRemarks": [
+                                      "JFK 6"
+                                    ],
+                                    "flxf:segmentSourceName": [
+                                      "WIND ROUTE OPTION JFK"
+                                    ],
+                                    "flxf:validSegment": [
+                                      "TRUE"
+                                    ],
+                                    "flxf:fullRouteIndicator": [
+                                      "FULL"
+                                    ],
+                                    "flxf:includeRoute": [
+                                      "INCLUDE"
+                                    ],
+                                    "flxf:routeType": [
+                                      {
+                                        "$": {
+                                          "xsi:nil": "true"
+                                        }
+                                      }
+                                    ],
+                                    "flxf:routeSegmentFilter": [
+                                      {
+                                        "$": {
+                                          "id": "RSF1"
+                                        },
+                                        "flxf:filterCombination": [
+                                          {
+                                            "$": {
+                                              "logicalOperator": "AND",
+                                              "id": "FC1"
+                                            },
+                                            "flxf:operand": [
+                                              {
+                                                "$": {
+                                                  "id": "FC1_OP1",
+                                                  "index": "1"
+                                                },
+                                                "flxf:filterCombination": [
+                                                  {
+                                                    "$": {
+                                                      "logicalOperator": "ANDNOT",
+                                                      "id": "FC2"
+                                                    },
+                                                    "flxf:operand": [
+                                                      {
+                                                        "$": {
+                                                          "id": "FC2_OP1",
+                                                          "index": "1"
+                                                        },
+                                                        "flxf:filterCombination": [
+                                                          {
+                                                            "$": {
+                                                              "logicalOperator": "AND",
+                                                              "id": "FC3"
+                                                            },
+                                                            "flxf:operand": [
+                                                              {
+                                                                "$": {
+                                                                  "id": "FC3_OP1",
+                                                                  "index": "1"
+                                                                },
+                                                                "flxf:filterCombination": [
+                                                                  {
+                                                                    "$": {
+                                                                      "logicalOperator": "OR",
+                                                                      "id": "ANY_USER_CATEGORY"
+                                                                    },
+                                                                    "flxf:operand": [
+                                                                      {
+                                                                        "$": {
+                                                                          "id": "ANY_USR_CAT_1",
+                                                                          "index": "1"
+                                                                        },
+                                                                        "flxf:userCategory": [
+                                                                          "GENERAL_AVIATION"
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "$": {
+                                                                          "id": "ANY_USR_CAT_2",
+                                                                          "index": "2"
+                                                                        },
+                                                                        "flxf:userCategory": [
+                                                                          "AIR_TAXI"
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "$": {
+                                                                          "id": "ANY_USR_CAT_3",
+                                                                          "index": "3"
+                                                                        },
+                                                                        "flxf:userCategory": [
+                                                                          "CARGO"
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "$": {
+                                                                          "id": "ANY_USR_CAT_4",
+                                                                          "index": "4"
+                                                                        },
+                                                                        "flxf:userCategory": [
+                                                                          "COMMERCIAL"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "$": {
+                                                                  "id": "FC3_OP2",
+                                                                  "index": "2"
+                                                                },
+                                                                "flxf:filterCombination": [
+                                                                  {
+                                                                    "$": {
+                                                                      "logicalOperator": "OR"
+                                                                    },
+                                                                    "flxf:operand": [
+                                                                      {
+                                                                        "flxf:aircraftCategory": [
+                                                                          "JET"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "flxf:RootLevelFilterElements": [
+                                          {
+                                            "flxf:arrivalTimePeriod": [
+                                              {
+                                                "startDateTime": [
+                                                  "2014-11-13T17:00:00Z"
+                                                ],
+                                                "endDateTime": [
+                                                  "2014-11-14T04:30:00Z"
+                                                ]
+                                              }
+                                            ],
+                                            "flxf:flightLevel": [
+                                              {
+                                                "lowerBound": [
+                                                  {
+                                                    "flightLevel": [
+                                                      {
+                                                        "_": "0",
+                                                        "$": {
+                                                          "uom": "FL"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "upperBound": [
+                                                  {
+                                                    "flightLevel": [
+                                                      {
+                                                        "_": "600",
+                                                        "$": {
+                                                          "uom": "FL"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "flxf:rvsmStatus": [
+                                              "OTHER:ALL"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "flxf:routeSignificantPointList": [
+                                      {
+                                        "flxf:significantPoint": [
+                                          {
+                                            "$": {
+                                              "isProtectedSignificantPoint": "FALSE",
+                                              "seq": "1"
+                                            },
+                                            "flxf:designatedPoint": [
+                                              {
+                                                "$": {
+                                                  "type": "FIX"
+                                                },
+                                                "flxf:designator": [
+                                                  "KK54K"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "$": {
+                                              "isProtectedSignificantPoint": "FALSE",
+                                              "seq": "2"
+                                            },
+                                            "flxf:designatedPoint": [
+                                              {
+                                                "$": {
+                                                  "type": "FIX"
+                                                },
+                                                "flxf:designator": [
+                                                  "KI57O"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "$": {
+                                              "isProtectedSignificantPoint": "FALSE",
+                                              "seq": "3"
+                                            },
+                                            "flxf:navaid": [
+                                              {
+                                                "flxf:designator": [
+                                                  "ROD"
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "flxf:routeElements": [
+                                      {
+                                        "flxf:element": [
+                                          {
+                                            "_": "KK54K",
+                                            "$": {
+                                              "seq": "1",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "KI57O",
+                                            "$": {
+                                              "seq": "2",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "ROD",
+                                            "$": {
+                                              "seq": "3",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "DJB",
+                                            "$": {
+                                              "seq": "4",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "JHW",
+                                            "$": {
+                                              "seq": "5",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "J70",
+                                            "$": {
+                                              "seq": "6",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "LVZ",
+                                            "$": {
+                                              "seq": "7",
+                                              "isProtected": "TRUE"
+                                            }
+                                          },
+                                          {
+                                            "_": "LENDY6",
+                                            "$": {
+                                              "seq": "8",
+                                              "isProtected": "TRUE"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "flxf:routeText": [
+                                      "KK54K KI57O ROD DJB JHW J70 LVZ LENDY6"
+                                    ],
+                                    "flxf:protectedSegmentText": [
+                                      "KK54K KI57O ROD DJB JHW J70 LVZ LENDY6"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:generalParameters": [
+              {
+                "flxf:rerouteGeneralParameters": [
+                  {
+                    "flxf:applyProtectedSegments": [
+                      "TRUE"
+                    ],
+                    "flxf:monitorReroute": [
+                      "TRUE"
+                    ],
+                    "flxf:systemRerouteId": [
+                      "RR.DCCOPS.LXSTN21.20141113104938"
+                    ],
+                    "flxf:systemRerouteName": [
+                      "FCAJFK:WIND_ROUTE_OPTION_JFK"
+                    ],
+                    "flxf:rerouteAirborne": [
+                      "ALL_FLIGHTS"
+                    ],
+                    "flxf:rerouteStatus": [
+                      "ACTIVE"
+                    ],
+                    "flxf:rerouteTimeType": [
+                      "FCA"
+                    ],
+                    "flxf:rerouteDataDomain": [
+                      "PUBLIC"
+                    ],
+                    "flxf:displayParameters": [
+                      {
+                        "flxf:displayColorCode": [
+                          "26"
+                        ],
+                        "flxf:drawFixes": [
+                          "FALSE"
+                        ],
+                        "flxf:drawNavaids": [
+                          "FALSE"
+                        ],
+                        "flxf:drawRerouteByDefault": [
+                          "FALSE"
+                        ],
+                        "flxf:drawRerouteLabel": [
+                          "FALSE"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "flxf:advisory": [
+          {
+            "$": {
+              "advisoryType": "REROUTE"
+            },
+            "flxf:designator": [
+              "017"
+            ],
+            "flxf:advisoryText": [
+              "ATCSCC ADVZY 017 DCC 11/13/14 FCA RQD \r\n\t\t\tNAME: FCAJFK:WIND_ROUTE_OPTION_JFK \r\n\t\t\tCONSTRAINED AREA: ZAU \r\n\t\t\tREASON: VOLUME \r\n\t\t\tINCLUDE TRAFFIC: MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO  \r\n\t\t\t\t\t\t\t JFK \r\n\t\t\tFACILITIES INCLUDED: ZAB/ZAU/ZDV/ZID/ZKC/ZLA/ZLC/ZMP/ZNY/ZOA/ZOB/ZSE \r\n\t\t\tFLIGHT STATUS: ALL_FLIGHTS \r\n\t\t\tVALID: FCA ENTRY TIME FROM 131700 TO 140430 \r\n\t\t\tPROBABILITY OF EXTENSION: NONE \r\n\t\t\tREMARKS: SEE DYNAMIC LIST FOR UPDATES. \r\n\t\t\tASSOCIATED RESTRICTIONS: SEE NTML. \r\n\t\t\tMODIFICATIONS:  \r\n\t\t\tROUTES: \r\n\t\t\tORIG                DEST                 ROUTE \r\n\t\t\t----                ----                 ----- \r\n\t\t\tMSP                 JFK                  >MSP DLL HASTE DAFLU J70    \r\n\t\t\t\t\t\t\t\t\t\t\t\t\t LVZ LENDY6<                 \r\n\t\t\tZLC ZOA ZSE         JFK                  >GEP DLL HASTE DAFLU J70    \r\n\t\t\t\t\t\t\t\t\t\t\t\t\t LVZ LENDY6<                 \r\n\t\t\tZSE ZAB ZDV ZLA     JFK                  >FOD KG75M DAFLU J70 LVZ    \r\n\t\t\tZLC ZMP ZOA                              LENDY6<                     \r\n\t\t\tZSE ZKC ZLA ZLC     JFK                  >SPI VHP ROD DJB JHW J70    \r\n\t\t\tZDV ZAB ZMP ZOA                          LVZ LENDY6<                 \r\n\t\t\tZSE ZLA ZKC ZLC     JFK                  >KK54K KI57O ROD DJB JHW    \r\n\t\t\tZMP ZOA ZAB ZDV                          J70 LVZ LENDY6<             \r\n\t\t\tZSE ZLC ZOA ZLA     JFK                  >PXV ROD DJB JHW J70 LVZ    \r\n\t\t\tZAB ZDV ZKC                              LENDY6<                     \r\n\t\t\tTMI ID: RRDCC017 \r\n\t\t\t131050-140430"
+            ],
+            "flxf:advisoryEffectivePeriod": [
+              {
+                "startDateTime": [
+                  "2014-11-13T17:00:00Z"
+                ],
+                "endDateTime": [
+                  "2014-11-14T04:30:00Z"
+                ]
+              }
+            ],
+            "flxf:advisoryInformation": [
+              {
+                "flxf:rerouteInformation": [
+                  {
+                    "flxf:remarkList": [
+                      {
+                        "flxf:remark": [
+                          {
+                            "_": "\t\tATCSCC ADVZY 017 DCC 11/13/14 FCA RQD \r\n\t\tNAME: FCAJFK:WIND_ROUTE_OPTION_JFK \r\n\t\tCONSTRAINED AREA: ZAU \r\n\t\tREASON: VOLUME \r\n\t\tINCLUDE TRAFFIC: MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO  \r\n\t\t\t\t\t\t JFK \r\n\t\tFACILITIES INCLUDED: ZAB/ZAU/ZDV/ZID/ZKC/ZLA/ZLC/ZMP/ZNY/ZOA/ZOB/ZSE \r\n\t\tFLIGHT STATUS: ALL_FLIGHTS \r\n\t\tVALID: FCA ENTRY TIME FROM 131700 TO 140430 \r\n\t\tPROBABILITY OF EXTENSION: NONE \r\n\t\tREMARKS: SEE DYNAMIC LIST FOR UPDATES. \r\n\t\tASSOCIATED RESTRICTIONS: SEE NTML. \r\n\t\tMODIFICATIONS:  \r\n\t\tROUTES: \r\n\t\tORIG                DEST                 ROUTE \r\n\t\t----                ----                 ----- \r\n\t\tMSP                 JFK                  >MSP DLL HASTE DAFLU J70    \r\n\t\t\t\t\t\t\t\t\t\t\t\t LVZ LENDY6<                 \r\n\t\tZLC ZOA ZSE         JFK                  >GEP DLL HASTE DAFLU J70    \r\n\t\t\t\t\t\t\t\t\t\t\t\t LVZ LENDY6<                 \r\n\t\tZSE ZAB ZDV ZLA     JFK                  >FOD KG75M DAFLU J70 LVZ    \r\n\t\tZLC ZMP ZOA                              LENDY6<                     \r\n\t\tZSE ZKC ZLA ZLC     JFK                  >SPI VHP ROD DJB JHW J70    \r\n\t\tZDV ZAB ZMP ZOA                          LVZ LENDY6<                 \r\n\t\tZSE ZLA ZKC ZLC     JFK                  >KK54K KI57O ROD DJB JHW    \r\n\t\tZMP ZOA ZAB ZDV                          J70 LVZ LENDY6<             \r\n\t\tZSE ZLC ZOA ZLA     JFK                  >PXV ROD DJB JHW J70 LVZ    \r\n\t\tZAB ZDV ZKC                              LENDY6<                     \r\n\t\tTMI ID: RRDCC017 \r\n\t\t131050-140430\r\n\t\t",
+                            "$": {
+                              "seq": "1"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:advisoryParameters": [
+              {
+                "flxf:timeParameters": [
+                  {
+                    "flxf:rerouteTimeParameters": [
+                      {
+                        "flxf:lastUpdateDateTime": [
+                          "2014-11-13T17:00:00Z"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "flxf:scopeParameters": [
+                  {
+                    "flxf:rerouteScopeParameters": [
+                      {
+                        "flxf:associatedRestrictions": [
+                          "SEE NTML."
+                        ],
+                        "flxf:constrainedArea": [
+                          "ZAU"
+                        ],
+                        "flxf:includeTraffic": [
+                          "MSP/ZAB/ZDV/ZKC/ZLA/ZLC/ZMP/ZOA/ZSE DEPARTURES TO JFK"
+                        ],
+                        "flxf:includedResources": [
+                          {
+                            "flxf:resource": [
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZAB"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZAU"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZDV"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZID"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZKC"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZLA"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZLC"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZMP"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZOA"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZOB"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZSE"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "flxf:generalParameters": [
+                  {
+                    "flxf:rerouteGeneralParameters": [
+                      {
+                        "flxf:advisoryAction": [
+                          "RQD"
+                        ],
+                        "flxf:advisoryMessageType": [
+                          "ADVISORY"
+                        ],
+                        "flxf:probabilityOfExtension": [
+                          "NONE"
+                        ],
+                        "flxf:advisoryCategory": [
+                          "FCA"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

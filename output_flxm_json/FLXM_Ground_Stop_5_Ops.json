@@ -1,0 +1,843 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ../Schema_Files/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2014-11-14T15:17:06Z"
+    ],
+    "type": [
+      "GS"
+    ],
+    "source": [
+      "TFMS"
+    ],
+    "sensitivityType": [
+      "A"
+    ],
+    "trafficManagementInitiative": [
+      {
+        "$": {
+          "tmiType": "GS"
+        },
+        "flxf:tmiStatus": [
+          "ACTUAL"
+        ],
+        "flxf:advisory": [
+          {
+            "$": {
+              "advisoryType": "GS"
+            },
+            "flxf:name": [
+              "CDM GROUND STOP"
+            ],
+            "flxf:advisoryEffectivePeriod": [
+              {
+                "startDateTime": [
+                  "2014-11-14T15:05:00Z"
+                ],
+                "endDateTime": [
+                  "2014-11-14T17:15:00Z"
+                ]
+              }
+            ],
+            "flxf:advisoryInformation": [
+              {
+                "flxf:gsInformation": [
+                  {
+                    "flxf:impactingCondition": [
+                      "OTHER"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:advisoryStatistics": [
+              {
+                "flxf:gsStatistics": [
+                  {
+                    "flxf:anticipatedDelay": [
+                      {
+                        "flxf:average": [
+                          "PT3504S"
+                        ],
+                        "flxf:maximum": [
+                          "PT122M"
+                        ],
+                        "flxf:total": [
+                          "PT4031M"
+                        ]
+                      }
+                    ],
+                    "flxf:currentDelays": [
+                      {
+                        "flxf:average": [
+                          "PT0M"
+                        ],
+                        "flxf:maximum": [
+                          "PT0M"
+                        ],
+                        "flxf:total": [
+                          "PT0M"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flxf:advisoryParameters": [
+              {
+                "flxf:timeParameters": [
+                  {
+                    "flxf:gsTimeParameters": [
+                      {
+                        "flxf:cumulativeProgramPeriod": [
+                          {
+                            "startDateTime": [
+                              "2014-11-14T15:05:00Z"
+                            ],
+                            "endDateTime": [
+                              "2014-11-14T17:15:00Z"
+                            ]
+                          }
+                        ],
+                        "flxf:expirationDateTime": [
+                          "2014-11-14T17:15:00Z"
+                        ],
+                        "flxf:lastUpdateDateTime": [
+                          "2014-11-14T15:17:06Z"
+                        ],
+                        "flxf:tmiPeriod": [
+                          {
+                            "startDateTime": [
+                              "2014-11-14T15:05:00Z"
+                            ],
+                            "endDateTime": [
+                              "2014-11-14T17:15:00Z"
+                            ]
+                          }
+                        ],
+                        "flxf:lastAdlDateTime": [
+                          "2014-11-14T15:15:26Z"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "flxf:scopeParameters": [
+                  {
+                    "flxf:gsScopeParameters": [
+                      {
+                        "flxf:applyToResource": [
+                          {
+                            "$": {
+                              "type": "AIRPORT"
+                            },
+                            "flxf:airport": [
+                              {
+                                "flxf:designator": [
+                                  "BOS"
+                                ]
+                              }
+                            ],
+                            "flxf:isPartOf": [
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZBW"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "flxf:scopeFilter": [
+                          {
+                            "flxf:filterCombination": [
+                              {
+                                "$": {
+                                  "logicalOperator": "AND",
+                                  "id": "FC1"
+                                },
+                                "flxf:operand": [
+                                  {
+                                    "$": {
+                                      "id": "FC1_OP1",
+                                      "index": "1"
+                                    },
+                                    "flxf:filterCombination": [
+                                      {
+                                        "$": {
+                                          "logicalOperator": "ANDNOT",
+                                          "id": "FC2"
+                                        },
+                                        "flxf:operand": [
+                                          {
+                                            "$": {
+                                              "id": "FC2_OP1",
+                                              "index": "1"
+                                            },
+                                            "flxf:filterCombination": [
+                                              {
+                                                "$": {
+                                                  "logicalOperator": "AND",
+                                                  "id": "FC3"
+                                                },
+                                                "flxf:operand": [
+                                                  {
+                                                    "$": {
+                                                      "id": "FC3_OP1",
+                                                      "index": "1"
+                                                    },
+                                                    "flxf:aircraftCategory": [
+                                                      "OTHER:JET_AND_PROP_ONLY"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "$": {
+                                                      "id": "FC3_OP2",
+                                                      "index": "2"
+                                                    },
+                                                    "flxf:filterCombination": [
+                                                      {
+                                                        "$": {
+                                                          "logicalOperator": "OR",
+                                                          "id": "FLIGHT_INCLUSION_LIST"
+                                                        },
+                                                        "flxf:operand": [
+                                                          {
+                                                            "$": {
+                                                              "id": "FC5_OP1"
+                                                            },
+                                                            "flxf:filterCombination": [
+                                                              {
+                                                                "$": {
+                                                                  "logicalOperator": "AND",
+                                                                  "id": "FLIGHT1"
+                                                                },
+                                                                "flxf:operand": [
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT1_ID"
+                                                                    },
+                                                                    "flxf:flight": [
+                                                                      {
+                                                                        "flxf:aircraftId": [
+                                                                          "KAP49"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT1_CARRIER"
+                                                                    },
+                                                                    "flxf:aircaftOperator": [
+                                                                      "KAP"
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT1_AFIX"
+                                                                    },
+                                                                    "flxf:arrivesDesignatedPoint": [
+                                                                      {
+                                                                        "$": {
+                                                                          "type": "AFIX"
+                                                                        },
+                                                                        "flxf:designator": [
+                                                                          "FREDO"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT1_CATEGORY"
+                                                                    },
+                                                                    "flxf:aircraftCategory": [
+                                                                      "OTHER:PROPELLER"
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "id": "FC5_OP2"
+                                                            },
+                                                            "flxf:filterCombination": [
+                                                              {
+                                                                "$": {
+                                                                  "logicalOperator": "AND",
+                                                                  "id": "FLIGHT2"
+                                                                },
+                                                                "flxf:operand": [
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT2_ID"
+                                                                    },
+                                                                    "flxf:flight": [
+                                                                      {
+                                                                        "flxf:aircraftId": [
+                                                                          "TFF20"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT2_CARRIER"
+                                                                    },
+                                                                    "flxf:aircaftOperator": [
+                                                                      "TFF"
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT2_AFIX"
+                                                                    },
+                                                                    "flxf:arrivesDesignatedPoint": [
+                                                                      {
+                                                                        "$": {
+                                                                          "type": "AFIX"
+                                                                        },
+                                                                        "flxf:designator": [
+                                                                          "PVD"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT2_CATEGORY"
+                                                                    },
+                                                                    "flxf:aircraftCategory": [
+                                                                      "JET"
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "id": "FC5_OP3"
+                                                            },
+                                                            "flxf:filterCombination": [
+                                                              {
+                                                                "$": {
+                                                                  "logicalOperator": "AND",
+                                                                  "id": "FLIGHT3"
+                                                                },
+                                                                "flxf:operand": [
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT3_ID"
+                                                                    },
+                                                                    "flxf:flight": [
+                                                                      {
+                                                                        "flxf:aircraftId": [
+                                                                          "EJA895"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT3_CARRIER"
+                                                                    },
+                                                                    "flxf:aircaftOperator": [
+                                                                      "EJA"
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT3_AFIX"
+                                                                    },
+                                                                    "flxf:arrivesDesignatedPoint": [
+                                                                      {
+                                                                        "$": {
+                                                                          "type": "AFIX"
+                                                                        },
+                                                                        "flxf:designator": [
+                                                                          "LOBBY"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT3_CATEGORY"
+                                                                    },
+                                                                    "flxf:aircraftCategory": [
+                                                                      "JET"
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "id": "FC5_OP4"
+                                                            },
+                                                            "flxf:filterCombination": [
+                                                              {
+                                                                "$": {
+                                                                  "logicalOperator": "AND",
+                                                                  "id": "FLIGHT4"
+                                                                },
+                                                                "flxf:operand": [
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT4_ID"
+                                                                    },
+                                                                    "flxf:flight": [
+                                                                      {
+                                                                        "flxf:aircraftId": [
+                                                                          "N620V"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT4_CARRIER"
+                                                                    },
+                                                                    "flxf:aircaftOperator": [
+                                                                      "DAL"
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT4_AFIX"
+                                                                    },
+                                                                    "flxf:arrivesDesignatedPoint": [
+                                                                      {
+                                                                        "$": {
+                                                                          "type": "AFIX"
+                                                                        },
+                                                                        "flxf:designator": [
+                                                                          "PVD"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT4_CATEGORY"
+                                                                    },
+                                                                    "flxf:aircraftCategory": [
+                                                                      "JET"
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "id": "FC5_OP5"
+                                                            },
+                                                            "flxf:filterCombination": [
+                                                              {
+                                                                "$": {
+                                                                  "logicalOperator": "AND",
+                                                                  "id": "FLIGHT5"
+                                                                },
+                                                                "flxf:operand": [
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT5_ID"
+                                                                    },
+                                                                    "flxf:flight": [
+                                                                      {
+                                                                        "flxf:aircraftId": [
+                                                                          "DAL2678"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT5_AFIX"
+                                                                    },
+                                                                    "flxf:arrivesDesignatedPoint": [
+                                                                      {
+                                                                        "flxf:designator": [
+                                                                          "SCUPP"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "$": {
+                                                                      "id": "FLIGHT5_CATEGORY"
+                                                                    },
+                                                                    "flxf:aircraftCategory": [
+                                                                      "JET"
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "$": {
+                                                      "id": "FC3_OP3",
+                                                      "index": "3"
+                                                    },
+                                                    "flxf:filterCombination": [
+                                                      {
+                                                        "$": {
+                                                          "logicalOperator": "OR",
+                                                          "id": "DEPARTURE_FACILITIES_INCLUDED_LIST"
+                                                        },
+                                                        "flxf:operand": [
+                                                          {
+                                                            "$": {
+                                                              "index": "1"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZSE"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "2"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZAB"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "3"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZLC"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "4"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZAU"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "5"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZLA"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "6"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZDC"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "7"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZFW"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "8"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZKC"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "9"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZME"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "10"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZHU"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "11"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZMP"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "12"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZDV"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "13"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZBW"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "14"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZOB"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "15"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZOA"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "16"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZJX"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "17"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZMA"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "18"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZID"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "17"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZTL"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "$": {
+                                                              "index": "18"
+                                                            },
+                                                            "flxf:departsAirspace": [
+                                                              {
+                                                                "$": {
+                                                                  "type": "CENTER"
+                                                                },
+                                                                "flxf:designator": [
+                                                                  "ZNY"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

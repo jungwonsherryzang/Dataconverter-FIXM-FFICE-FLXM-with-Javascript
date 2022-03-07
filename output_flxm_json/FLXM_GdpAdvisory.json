@@ -1,0 +1,112 @@
+{
+  "BasicMessage": {
+    "$": {
+      "xmlns": "http://flxm.aero/base/2.0.0",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:flxf": "http://flxm.aero/features/2.0.0",
+      "xsi:schemaLocation": "http://flxm.aero/2.0.0 ../Schema_Files/FLXM_v2_0_0_alpha1.XSD"
+    },
+    "dateTimeStamp": [
+      "2015-01-06T17:18:23Z"
+    ],
+    "type": [
+      "GS"
+    ],
+    "source": [
+      "TFMS"
+    ],
+    "sensitivityType": [
+      "A"
+    ],
+    "trafficManagementInitiative": [
+      {
+        "$": {
+          "tmiType": "GS"
+        },
+        "flxf:tmiStatus": [
+          "ACTUAL"
+        ],
+        "flxf:advisory": [
+          {
+            "$": {
+              "advisoryType": "GS_CANCEL"
+            },
+            "flxf:name": [
+              "CDM GROUND STOP"
+            ],
+            "flxf:advisoryEffectivePeriod": [
+              {
+                "startDateTime": [
+                  "2014-11-14T15:05:00Z"
+                ],
+                "endDateTime": [
+                  "2014-11-14T17:15:00Z"
+                ]
+              }
+            ],
+            "flxf:advisoryParameters": [
+              {
+                "flxf:timeParameters": [
+                  {
+                    "flxf:gsTimeParameters": [
+                      {
+                        "flxf:expirationDateTime": [
+                          "2015-01-06T18:30:00Z"
+                        ],
+                        "flxf:lastUpdateDateTime": [
+                          "2015-01-06T17:18:23Z"
+                        ],
+                        "flxf:lastAdlDateTime": [
+                          "2015-01-06T17:15:48Z"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "flxf:scopeParameters": [
+                  {
+                    "flxf:gsScopeParameters": [
+                      {
+                        "flxf:applyToResource": [
+                          {
+                            "$": {
+                              "type": "AIRPORT"
+                            },
+                            "flxf:airport": [
+                              {
+                                "flxf:designator": [
+                                  "DCA"
+                                ]
+                              }
+                            ],
+                            "flxf:isPartOf": [
+                              {
+                                "$": {
+                                  "type": "AIRSPACE"
+                                },
+                                "flxf:airspace": [
+                                  {
+                                    "$": {
+                                      "type": "CENTER"
+                                    },
+                                    "flxf:designator": [
+                                      "ZDC"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
