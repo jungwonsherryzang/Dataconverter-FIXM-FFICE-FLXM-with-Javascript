@@ -9,7 +9,7 @@ var parser = new xml4js.Parser(options);
 var parseString = require('xml2js').parseString;
 
 // Adding it manually
-var xsd = fs.readFileSync('./tests/xsd/FIXM/FficeTRP_FficeMessage.xsd', {encoding: 'utf-8'});
+var xsd = fs.readFileSync('./tests/xsd/FIXM/Schema/applications/fficemessage/fficetemplates/trialresponse/fficemessage/FficeTRP_FficeMessage.xsd', {encoding: 'utf-8'});
 var xml = fs.readFileSync('./tests/xml/FIXM/E_TRIAL_RESP.xml', {encoding: 'utf-8'});
 
 
